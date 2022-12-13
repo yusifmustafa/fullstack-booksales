@@ -1,51 +1,64 @@
 import {
+  Box,
   Button,
-  ButtonGroup,
   Card,
-  CardBody,
-  CardFooter,
-  Divider,
   Heading,
   Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ProductList = () => {
+const productList = ({ item, key }) => {
   return (
-    <Card maxW="sm">
-      <CardBody>
-        <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
-          borderRadius="lg"
-        />
-        <Stack mt="6" spacing="3">
-          <Heading size="md">Living room Sofa</Heading>
-          <Text>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
+    // <Box
+    //   borderWidth="1px"
+    //   borderRadius="lg"
+    //   overflow="hidden"
+    //   p="3"
+    //  >
+    //   <Link to="/#">
+    //     <Image src={item?.image} alt={item?.name} loading="lazy" />
+    //     <Box p="6">
+    //       <Box d="flex" alignItems="baseline">
+    //         Author:{item?.author}
+    //       </Box>
+    //       <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight">
+    //         <h3>{item?.name}</h3>
+    //       </Box>
+    //       <Box>${item.price}</Box>
+    //     </Box>
+    //   </Link>
+    //   <Button colorScheme="blue">Add to basket</Button>
+    // </Box>
+    <Box mt="25px">
+      <Stack p={{ base: "0 2rem" }}>
+        <Link to="/#">
+          <Image
+            objectFit="cover"
+            src={item?.image}
+            alt={item?.name}
+            borderRadius="15px"
+          />
+          <Text color="teal.600" textTransform="uppercase">
+            Author:{item?.author}
           </Text>
-          <Text color="blue.600" fontSize="2xl">
-            $450
-          </Text>
-        </Stack>
-      </CardBody>
-      <Divider />
-      <CardFooter>
-        <ButtonGroup spacing="2">
-          <Button variant="solid" colorScheme="blue">
-            Buy now
-          </Button>
-          <Button variant="ghost" colorScheme="blue">
-            Add to cart
-          </Button>
-        </ButtonGroup>
-      </CardFooter>
-    </Card>
+
+          <Heading color="teal.300" size="md" textTransform="capitalize">
+            {item?.name}
+          </Heading>
+          <Box>
+            ${item.price}{" "}
+            <Box as="span" color="gray.600" fontSize="sm">
+              {item?.genre}
+            </Box>
+          </Box>
+        </Link>
+        <Button colorScheme="blue">Add to basket</Button>
+      </Stack>
+    </Box>
   );
 };
 
-export default ProductList;
+export default productList;

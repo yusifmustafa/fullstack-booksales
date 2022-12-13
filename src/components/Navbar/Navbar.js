@@ -1,10 +1,11 @@
 import { Button } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../context/ProductContextProvider";
 import styles from "./styles.module.css";
 
 const Navbar = () => {
-  return (
+   return (
     <nav className={styles.nav}>
       <div className={styles.left}>
         <div className="logo">
