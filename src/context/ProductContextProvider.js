@@ -5,7 +5,7 @@ export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
 
 const INITIAL_STATE = {
-  productList: [],
+  products: [],
 };
 
 const ProductContextProvider = (props) => {
@@ -24,7 +24,7 @@ const ProductContextProvider = (props) => {
   function getAllProduct() {
     Api.get(URL_ALL_PRODUCT).then((rsp) => {
       const data = rsp?.data;
-       setState({ ...state, productList: data });
+       setState({ ...state, products: data });
     });
   }
 };

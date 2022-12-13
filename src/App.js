@@ -3,7 +3,8 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import ProductList from "./components/Porductlist/ProductList";
 import ProductContextProvider from "./context/ProductContextProvider";
-import Card from "./components/Card/Card";
+
+import ProductDetail from "./components/Product Detail/ProductDetail";
 function App() {
   return (
     <div>
@@ -11,7 +12,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<ProductList />} />
-          <Route path="/card" element={<Card />} />
+         
+          <Route path="productdetail" element={<ProductDetail />} />
         </Routes>
       </ProductContextProvider>
     </div>
