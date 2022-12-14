@@ -34,7 +34,7 @@ const ProductList = () => {
           <Card key={item.id} mt="25px" mb="20px">
             <Box mt="25px" mb="20px">
               <Stack p={{ base: "0 2rem" }}>
-                <Link to="/#">
+                <Link to={`productdetail/${item.id}`}>
                   <Image
                     objectFit="cover"
                     src={item?.image}

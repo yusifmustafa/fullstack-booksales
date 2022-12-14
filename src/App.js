@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductList />} />
          
-          <Route path="productdetail" element={<ProductDetail />} />
+          <Route path="productdetail/:id" element={<ProductDetail />} />
         </Routes>
       </ProductContextProvider>
     </div>

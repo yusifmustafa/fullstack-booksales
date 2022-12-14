@@ -16,10 +16,21 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
+import { useContext, useEffect } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
+import { useParams } from "react-router-dom";
+import { ProductContext } from "../../context/ProductContextProvider";
 
 export default function ProductDetail() {
+  const context = useContext(ProductContext);
+  const { product } = context;
+  console.log(product);
+  const { id } = useParams();
+  useEffect(() => {
+    context.getProductById(id);
+  }, [id]);
+
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -30,14 +41,13 @@ export default function ProductDetail() {
         <Flex>
           <Image
             rounded={"md"}
-            alt={"product image"}
-            src={
-              "https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080"
-            }
+            alt={product?.name}
+            src={product?.image}
             fit={"cover"}
             align={"center"}
-            w={"100%"}
-            h={{ base: "100%", sm: "400px", lg: "500px" }}
+            w={"70%"}
+            h={"100%"}
+            // h={{ base: "100%", sm: "400px", lg: "500px" }}
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -47,14 +57,14 @@ export default function ProductDetail() {
               fontWeight={600}
               fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
             >
-              Automatic Watch
+              {product?.name}
             </Heading>
             <Text
               color={useColorModeValue("gray.900", "gray.400")}
               fontWeight={300}
               fontSize={"2xl"}
             >
-              $350.00 USD
+              ${product?.price} USD
             </Text>
           </Box>
 
@@ -73,14 +83,7 @@ export default function ProductDetail() {
                 fontSize={"2xl"}
                 fontWeight={"300"}
               >
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore
-              </Text>
-              <Text fontSize={"lg"}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                aliquid amet at delectus doloribus dolorum expedita hic, ipsum
-                maxime modi nam officiis porro, quae, quisquam quos
-                reprehenderit velit? Natus, totam.
+                {product?.genre}
               </Text>
             </VStack>
             <Box>
@@ -96,18 +99,18 @@ export default function ProductDetail() {
 
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <List spacing={2}>
-                  <ListItem>Chronograph</ListItem>
-                  <ListItem>Master Chronometer Certified</ListItem>{" "}
-                  <ListItem>Tachymeter</ListItem>
+                  <ListItem>Price</ListItem>
+                  <ListItem>Product Name</ListItem>{" "}
+                  <ListItem>Author</ListItem>
                 </List>
                 <List spacing={2}>
-                  <ListItem>Anti‑magnetic</ListItem>
-                  <ListItem>Chronometer</ListItem>
-                  <ListItem>Small seconds</ListItem>
+                  <ListItem>{product?.price} USD</ListItem>
+                  <ListItem>{product?.name}</ListItem>
+                  <ListItem>{product?.author}</ListItem>
                 </List>
               </SimpleGrid>
             </Box>
-            <Box>
+            {/* <Box>
               <Text
                 fontSize={{ base: "16px", lg: "18px" }}
                 color={useColorModeValue("yellow.500", "yellow.300")}
@@ -163,7 +166,7 @@ export default function ProductDetail() {
                   5 bar (50 metres / 167 feet){" "}
                 </ListItem>
               </List>
-            </Box>
+            </Box> */}
           </Stack>
 
           <Button
@@ -185,7 +188,7 @@ export default function ProductDetail() {
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />
-            <Text>2-3 business days delivery</Text>
+            <Text>2-3 iş günü ərzində çatdırılma</Text>
           </Stack>
         </Stack>
       </SimpleGrid>

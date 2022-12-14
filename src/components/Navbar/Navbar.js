@@ -1,13 +1,6 @@
-import {
-  Avatar,
-  AvatarBadge,
-  Badge,
-  Button,
-  IconButton,
-} from "@chakra-ui/react";
-import React, { useContext } from "react";
+import { Badge, Button } from "@chakra-ui/react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../../context/ProductContextProvider";
 import styles from "./styles.module.css";
 
 const Navbar = () => {
@@ -25,6 +18,9 @@ const Navbar = () => {
       </div>
 
       <div className={styles.right}>
+        <div className={styles.icon}>
+          <i className="fas fa-cart-plus"></i>
+        </div>
         <Link to="/signin">
           <Button colorScheme="blue">Login</Button>
         </Link>
