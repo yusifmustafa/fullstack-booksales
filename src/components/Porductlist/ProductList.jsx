@@ -30,7 +30,7 @@ const ProductList = () => {
       minH="100vh"
     >
       <Grid templateColumns="repeat(4,1fr)" gap={4}>
-        {products.map((item, key) => (
+        {products.map((item) => (
           <Card key={item.id} mt="25px" mb="20px">
             <Box mt="25px" mb="20px">
               <Stack p={{ base: "0 2rem" }}>
@@ -63,7 +63,12 @@ const ProductList = () => {
                     </Box>
                   </Box>
                 </Link>
-                <Button colorScheme="blue">Add to basket</Button>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => context.sendToBasketProducts(item.id)}
+                >
+                  Add to basket
+                </Button>
               </Stack>
             </Box>
           </Card>

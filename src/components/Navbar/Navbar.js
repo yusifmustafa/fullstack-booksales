@@ -19,8 +19,10 @@ const Navbar = () => {
 
       <div className={styles.right}>
         <div className={styles.icon}>
-           <i className="fas fa-cart-plus"></i>
-         </div>
+          <Link to="/basketproducts">
+            <i className="fas fa-cart-plus"></i>
+          </Link>
+        </div>
         <Link to="/signin">
           <Button colorScheme="blue">Login</Button>
         </Link>
