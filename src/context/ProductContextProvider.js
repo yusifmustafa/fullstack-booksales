@@ -9,9 +9,10 @@ const INITIAL_STATE = {
   products: [],
   product: {},
   sendToBasketProduct: [],
+  user: {},
 };
 const ProductContextProvider = (props) => {
-   const [state, setState] = useState(INITIAL_STATE);
+  const [state, setState] = useState(INITIAL_STATE);
   return (
     <ProductContext.Provider
       value={{
@@ -21,7 +22,8 @@ const ProductContextProvider = (props) => {
         getBasketProducts: getBasketProducts,
         sendToBasketProducts: sendToBasketProducts,
         deleteBasketProduct: deleteBasketProduct,
-       }}
+        handleOnChange: handleOnChange,
+      }}
     >
       {props.children}
     </ProductContext.Provider>
@@ -39,7 +41,14 @@ const ProductContextProvider = (props) => {
       data.map((product) => setState({ ...state, product: product }));
     });
   }
-
+  function handleOnChange(event) {
+    const { name, value } = event;
+    setState(
+      Object.assign({}, state, {
+        user: Object.assign({}, state.user, { [name]: value }),
+      })
+    );
+  }
   function getBasketProducts() {
     Api.get(URL_BASKET_PRODUCTS).then((rsp) => {
       const data = rsp?.data;

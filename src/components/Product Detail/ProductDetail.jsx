@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { MdLocalShipping } from "react-icons/md";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 
 export default function ProductDetail() {
@@ -29,11 +29,7 @@ export default function ProductDetail() {
     context.getProductById(id);
   }, [id]);
 
-  const navigate = useNavigate();
-
-  const handleOnClick = () => {
-    navigate("/paypalpage");
-  };
+  
 
   return (
     <Container maxW={"7xl"}>

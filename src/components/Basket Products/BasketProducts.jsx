@@ -6,7 +6,6 @@ import "./BasketProducts.css";
 const BasketProducts = () => {
   const context = useContext(ProductContext);
   const { sendToBasketProduct } = context;
-
   let total = 0;
   let tax = 0;
   let shipping = 0;
@@ -69,22 +68,9 @@ const BasketProducts = () => {
                           <Button colorScheme="blue">-</Button>
                         </div>
                       </div>
-                      <Button
-                        rounded={"none"}
-                        w={"50%"}
-                        mt={8}
-                        size={"lg"}
-                        py={"7"}
-                        bg="gray.900"
-                        color="white"
-                        textTransform={"uppercase"}
-                        _hover={{
-                          transform: "translateY(2px)",
-                          boxShadow: "lg",
-                        }}
-                      >
-                        Add to cart
-                      </Button>
+                      <div className="addtocartbtn">
+                        <Link to={`/paypalpage/${item.id}`}>Add to cart</Link>
+                      </div>
                     </div>
                   </div>
                 </li>

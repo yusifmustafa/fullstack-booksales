@@ -1,45 +1,27 @@
-import React from "react";
+import { GridItem, Input, useToast } from "@chakra-ui/react";
+import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { ProductContext } from "../../context/ProductContextProvider";
 import "./Paypal.css";
+export const blockInvalidChar = (e) =>
+  ["e", "E", "+", "-", ",", "."].includes(e.key) && e.preventDefault();
 const Paypal = () => {
+  const { id } = useParams();
+  console.log("id", id);
+  const toast = useToast();
+
+  const context = useContext(ProductContext);
+  const { product, user, handleOnChange } = context;
+  console.log(product);
+  useEffect(() => {
+    context.getProductById(id);
+  }, [id]);
+
+  let shipping = product.price / 4;
+  let tax = product.price / 10;
   return (
     <main class="container">
       <div class="main">
-        <section class="shipping_address">
-          <h2 class="ship_head">Shipping Address</h2>
-          <div class="addresses">
-            <form action="">
-              <div class="address_primary">
-                <div class="info">
-                  <p class="bold">Name:</p>
-                  <p class="light">John Doe</p>
-                </div>
-                <div class="info">
-                  <p class="bold">Phone:</p>
-                  <p class="light">(305) 345-5678</p>
-                </div>
-                <div class="info">
-                  <p class="bold">Address:</p>
-                  <p class="light">312 Everette Alley, Miami, FL 33147</p>
-                </div>
-              </div>
-              <div class="address_secondary">
-                <div class="info">
-                  <p class="bold">Name:</p>
-                  <p class="light">John Doe</p>
-                </div>
-                <div class="info">
-                  <p class="bold">Phone:</p>
-                  <p class="light">(305) 345-5678</p>
-                </div>
-                <div class="info">
-                  <p class="bold">Address:</p>
-                  <p class="light">209 Marigold Lane, Miami, FL 33169</p>
-                </div>
-              </div>
-            </form>
-          </div>
-          <span class="new_address">+ add new address</span>
-        </section>
         <section class="payment_method">
           <h2 class="ship_head">Payment Method</h2>
           <div class="card_info">
@@ -68,39 +50,70 @@ const Paypal = () => {
                 alt=""
               />
             </div>
-            <form action="">
-              <input
+            <form>
+              <Input
                 type="text"
-                name="Name"
-                value=""
+                name="cardholder"
+                value={user.cardholder}
+                onChange={(event) =>
+                  handleOnChange({
+                    name: event.target.name,
+                    value: event.target.value,
+                  })
+                }
                 placeholder="Card Holder"
-                maxlength="60"
               />
-              <input
-                type="text"
-                name="Number"
-                value=""
+              <Input
+                type="number"
+                name="cardnumber"
+                value={user.cardnumber}
+                onChange={(event) =>
+                  handleOnChange({
+                    name: event.target.name,
+                    value: event.target.value,
+                  })
+                }
                 placeholder="Card Number"
-                maxlength="16"
               />
               <div>
-                <input
-                  type="text"
-                  name="Name"
-                  value=""
-                  placeholder="Expire"
-                  maxlength="4"
+                <Input
+                  type="date"
+                  name="date"
+                  value={user.date}
+                  onChange={(event) =>
+                    handleOnChange({
+                      name: event.target.name,
+                      value: event.target.value,
+                    })
+                  }
+                  onKeyDown={blockInvalidChar}
+                  placeholder="11/25"
+                  maxlength="5"
                 />
-                <input
-                  type="text"
-                  name="Name"
-                  value=""
+                <Input
+                  type="number"
+                  name="cvc"
+                  value={user.cvc}
                   placeholder="CVC"
-                  maxlength="3"
+                   onKeyDown={blockInvalidChar}
+                  pattern="[0-9\s]{13,19}"
                 />
               </div>
             </form>
-            <span class="save_card">Save Card</span>
+            <span
+              onClick={() => {
+                toast({
+                  title: "Kart yadda saxlanıldı!",
+                  position: "top-right",
+                  status: "success",
+                  duration: 9000,
+                  isClosable: true,
+                });
+              }}
+              class="save_card"
+            >
+              Save Card
+            </span>
           </div>
           <div class="e_payment">
             <div class="pay">
@@ -130,21 +143,21 @@ const Paypal = () => {
             <hr />
             <div class="price">
               <p>Order price:</p>
-              <p>$49.99</p>
+              <p>${product.price}</p>
             </div>
             <div class="price">
               <p>Shipping:</p>
-              <p>$5.00</p>
+              <p>${shipping}</p>
             </div>
             <div class="price">
               <p>Tax:</p>
-              <p>$3.25</p>
+              <p>${tax}</p>
             </div>
             <br />
             <hr />
             <div class="total_price">
               <p class="dark">Total:</p>
-              <p class="dark">$58.24</p>
+              <p class="dark">${shipping + tax + product.price}</p>
             </div>
           </div>
           <img

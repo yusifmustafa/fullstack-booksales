@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 * {
   box-sizing: border-box;
 }
+
 body {
   color: #333;
   -webkit-font-smoothing: antialiased;
@@ -58,6 +60,7 @@ img {
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   letter-spacing: -0.015em;
+  line-height: 20px;
   font-size: 0.75em;
   padding: 1em;
   color: #fff;
@@ -414,4 +417,25 @@ a.remove:hover {
 .incdecbutton .incdecvalue {
   padding: 0.25rem;
   font-family: sans-serif;
+}
+
+.addtocartbtn {
+  background-color: #16293d;
+  color: #fff;
+  width: 50%;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif !important;
+  cursor: pointer;
+}
+
+.addtocartbtn:hover {
+  background-color: #0b152c;
+  transition: all 0.3s ease-in-out 0s;
+  outline: rgb(0, 25, 62) dashed 0;
 }

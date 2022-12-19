@@ -11,8 +11,7 @@ import {
   Text,
   useToast,
   Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
+ } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
