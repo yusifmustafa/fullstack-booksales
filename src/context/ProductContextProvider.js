@@ -8,12 +8,10 @@ const URL_BASKET_PRODUCTS = "/api/basketproducts";
 const INITIAL_STATE = {
   products: [],
   product: {},
-  number: 1,
   sendToBasketProduct: [],
 };
 const ProductContextProvider = (props) => {
-  console.log(INITIAL_STATE.number);
-  const [state, setState] = useState(INITIAL_STATE);
+   const [state, setState] = useState(INITIAL_STATE);
   return (
     <ProductContext.Provider
       value={{
@@ -23,9 +21,7 @@ const ProductContextProvider = (props) => {
         getBasketProducts: getBasketProducts,
         sendToBasketProducts: sendToBasketProducts,
         deleteBasketProduct: deleteBasketProduct,
-        countNumber: countNumber,
-        decrementNumber: decrementNumber,
-      }}
+       }}
     >
       {props.children}
     </ProductContext.Provider>
@@ -47,12 +43,6 @@ const ProductContextProvider = (props) => {
   function getBasketProducts() {
     Api.get(URL_BASKET_PRODUCTS).then((rsp) => {
       const data = rsp?.data;
-      data.map((item) => {
-        const obj = {
-          name: item.name,
-          author: item.author,
-        };
-      });
       setState({ ...state, sendToBasketProduct: data });
     });
   }
@@ -67,14 +57,6 @@ const ProductContextProvider = (props) => {
       const data = rsp?.data;
       setState({ ...state, sendToBasketProduct: data });
     });
-  }
-  function countNumber() {
-    var count = INITIAL_STATE.number + 1;
-    console.log("count", count);
-  }
-  function decrementNumber() {
-    var decrement = INITIAL_STATE.number - 1;
-    console.log("decrement", decrement);
   }
 };
 

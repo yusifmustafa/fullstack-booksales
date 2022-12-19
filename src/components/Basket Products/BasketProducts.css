@@ -413,4 +413,5 @@ a.remove:hover {
 
 .incdecbutton .incdecvalue {
   padding: 0.25rem;
+  font-family: sans-serif;
 }

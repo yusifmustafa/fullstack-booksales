@@ -9,6 +9,9 @@ import {
   Image,
   Stack,
   Text,
+  useToast,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -21,6 +24,11 @@ const ProductList = () => {
   useEffect(() => {
     context.getAllProduct();
   }, []);
+  const toast = useToast();
+  const handleAddProductBasket = (id) => {
+    context.sendToBasketProducts(id);
+  };
+
   return (
     <Flex
       direction="column"
@@ -63,12 +71,25 @@ const ProductList = () => {
                     </Box>
                   </Box>
                 </Link>
-                <Button
-                  colorScheme="blue"
-                  onClick={() => context.sendToBasketProducts(item.id)}
-                >
-                  Add to basket
-                </Button>
+                <Wrap>
+                  <Button
+                    colorScheme="blue"
+                    onClick={() => {
+                      handleAddProductBasket(item.id);
+                      toast({
+                        title: "Məhsul səbətə əlavə edildi!",
+                        description:
+                          "Məhsulu görüntüləmək üçün səbətə daxil olun",
+                        position: "top-right",
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                      });
+                    }}
+                  >
+                    Add to basket
+                  </Button>
+                </Wrap>
               </Stack>
             </Box>
           </Card>
