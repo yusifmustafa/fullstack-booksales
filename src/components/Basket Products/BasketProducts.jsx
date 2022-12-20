@@ -6,6 +6,7 @@ import "./BasketProducts.css";
 const BasketProducts = () => {
   const context = useContext(ProductContext);
   const { sendToBasketProduct } = context;
+  console.log("sendToBasketProduct", sendToBasketProduct);
   let total = 0;
   let tax = 0;
   let shipping = 0;
@@ -30,7 +31,7 @@ const BasketProducts = () => {
               (tax = total / 10),
               (shipping = total / 20)),
               (
-                <li key={item.id} className="items odd">
+                <li key={item.BPid} className="items odd">
                   <div className="infoWrap">
                     <div className="cartSection">
                       <div>
@@ -64,8 +65,13 @@ const BasketProducts = () => {
                       <div className="incdecbutton">
                         <div className="buttons">
                           <Button colorScheme="blue">+</Button>
-                          <span className="incdecvalue">1</span>
-                          <Button colorScheme="blue">-</Button>
+                          <span className="incdecvalue">{item.count}</span>
+                          <Button
+                            disabled={item.count === 1}
+                            colorScheme="blue"
+                          >
+                            -
+                          </Button>
                         </div>
                       </div>
                       <div className="addtocartbtn">

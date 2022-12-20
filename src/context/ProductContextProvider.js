@@ -65,6 +65,7 @@ const ProductContextProvider = (props) => {
     Api.delete(`http://127.0.0.1:3000/api/basketproducts/${id}`).then((rsp) => {
       const data = rsp?.data;
       setState({ ...state, sendToBasketProduct: data });
+      getAllProduct();
     });
   }
 };
