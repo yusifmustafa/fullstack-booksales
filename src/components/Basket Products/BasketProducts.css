@@ -325,7 +325,7 @@ a.remove:hover {
 }
 .promoCode .btn {
   font-size: 0.85em;
-  paddding: 0.5em 2em;
+  padding: 0.5em 2em;
 }
 /* TOTAL AND CHECKOUT  */
 .subtotal {
@@ -420,14 +420,14 @@ a.remove:hover {
 }
 
 .addtocartbtn {
-  background-color: #16293d;
+  background-color: #2b6cb0;
   color: #fff;
   width: 50%;
   margin-top: 1.5rem;
   padding: 0.75rem;
   text-transform: uppercase;
   font-size: 1.5rem;
-  border-radius: 5px;
+  border-radius: 5rem;
   display: flex;
   justify-content: center;
   font-family: "Montserrat", sans-serif !important;
@@ -436,6 +436,10 @@ a.remove:hover {
 
 .addtocartbtn:hover {
   background-color: #0b152c;
-  transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0.1s;
   outline: rgb(0, 25, 62) dashed 0;
+}
+
+.addtocartbtn::after {
+  background-color: #0b152c;
 }

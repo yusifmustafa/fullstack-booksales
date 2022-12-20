@@ -77,9 +77,10 @@ const Paypal = () => {
               />
               <div>
                 <Input
-                  type="date"
+                  type="month"
                   name="date"
                   value={user.date}
+                  min="2020-08"
                   onChange={(event) =>
                     handleOnChange({
                       name: event.target.name,
@@ -95,8 +96,7 @@ const Paypal = () => {
                   name="cvc"
                   value={user.cvc}
                   placeholder="CVC"
-                   onKeyDown={blockInvalidChar}
-                  pattern="[0-9\s]{13,19}"
+                  onInput={(e) => (e.target.value = e.target.value.slice(0, 3))}
                 />
               </div>
             </form>
