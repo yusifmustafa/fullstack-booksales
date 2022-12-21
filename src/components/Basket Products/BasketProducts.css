@@ -75,6 +75,8 @@ img {
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
+
+
 .heading a.continue:after {
   content: "\276f";
   padding: 0.5em;

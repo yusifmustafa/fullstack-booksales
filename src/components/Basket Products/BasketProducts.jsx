@@ -1,15 +1,26 @@
-import { Button } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  Button,
+  Skeleton,
+  Stack,
+} from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
+import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
-const BasketProducts = () => {
-  const context = useContext(ProductContext);
+const BasketProducts = (props) => {
+   const context = useContext(ProductContext);
   const { sendToBasketProduct } = context;
-  console.log("sendToBasketProduct", sendToBasketProduct);
+  console.log("sendToBasketProduct: ", sendToBasketProduct);
   let total = 0;
   let tax = 0;
   let shipping = 0;
+
   useEffect(() => {
     context.getBasketProducts();
   }, []);
@@ -25,63 +36,42 @@ const BasketProducts = () => {
       </div>
       <div className="cart">
         <ul className="cartWrap">
-          {sendToBasketProduct.map(
-            (item) => (
-              ((total += item.price * item.count),
-              (tax = total / 10),
-              (shipping = total / 20)),
-              (
-                <li key={item.BPid} className="items odd">
-                  <div className="infoWrap">
-                    <div className="cartSection">
-                      <div>
-                        <img src={item?.image} alt="" className="itemImg" />
-                      </div>
-                      <div style={{ margin: "1rem" }}>
-                        <h1>{item?.name}</h1>
-                        <div className="deleteandprice">
-                          <div className="prodTotal cartSection">
-                            <p>${item?.price}</p>
-                            <Button
-                              onClick={() =>
-                                context.deleteBasketProduct(item.BPid)
-                              }
-                              className="remove"
-                              colorScheme="red"
-                            >
-                              X
-                            </Button>
-                          </div>
-                        </div>
-                        <div>
-                          <h3>Author: {item?.author}</h3>
-                        </div>
-                      </div>
-                      <div>
-                        <h2>Genre: {item?.genre}</h2>
-                      </div>
-                      <p className="stockStatus"> In Stock</p>
-                      <div className="cartSection removeWrap"></div>{" "}
-                      <div className="incdecbutton">
-                        <div className="buttons">
-                          <Button colorScheme="blue">+</Button>
-                          <span className="incdecvalue">{item.count}</span>
-                          <Button
-                            disabled={item.count === 1}
-                            colorScheme="blue"
-                          >
-                            -
-                          </Button>
-                        </div>
-                      </div>
-                      <div className="addtocartbtn">
-                        <Link to={`/paypalpage/${item.id}`}>Add to cart</Link>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              )
-            )
+          {sendToBasketProduct.length ? (
+            sendToBasketProduct.map((item) => {
+              total = total + shipping + tax + item.price * item.count;
+              shipping = parseInt(total / 6);
+              tax = parseInt(total / 10);
+              console.log("itemmm: ", item);
+              return (
+                <div key={item.id}>
+                  <BasketProductItem item={item} />
+                </div>
+              );
+            })
+          ) : (
+            <Alert
+              status="error"
+              variant="subtle"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              height="150px"
+              borderRadius="20px"
+            >
+              <AlertIcon boxSize="40px" mr={0} />
+              <AlertTitle mt={4} mb={1} fontSize="lg">
+                Səbətiniz Boşdur!
+              </AlertTitle>
+              <AlertDescription maxWidth="sm">
+                Əsas Səhifəyə qayıdaraq alış-veriş etməyə davam edin
+              </AlertDescription>
+            </Alert>
+            // <Stack>
+            //   <Skeleton height="20px" />
+            //   <Skeleton height="20px" />
+            //   <Skeleton height="20px" />
+            // </Stack>
           )}
         </ul>
 
@@ -109,9 +99,17 @@ const BasketProducts = () => {
             </li>
 
             <li className="totalRow">
-              <a href="#" className="btn continue">
+              <Button
+                disabled={sendToBasketProduct.length === 0}
+                href="#"
+                className="btn continue"
+                colorScheme="blue"
+                borderRadius="50px"
+                width="220px"
+                height="70px"
+              >
                 Checkout
-              </a>
+              </Button>
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import { GridItem, Input, useToast } from "@chakra-ui/react";
+import { Input, useToast } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
@@ -11,41 +11,41 @@ const Paypal = () => {
   const toast = useToast();
 
   const context = useContext(ProductContext);
-  const { product, user, handleOnChange } = context;
-  console.log(product);
+  const { basketProducts, user, handleOnChange } = context;
+  console.log("basketproducts: ", basketProducts);
   useEffect(() => {
-    context.getProductById(id);
+    context.getBasketProductsById(id);
   }, [id]);
 
-  let shipping = product.price / 4;
-  let tax = product.price / 10;
+  let shipping = basketProducts.price / 4;
+  let tax = basketProducts.price / 10;
   return (
-    <main class="container">
-      <div class="main">
-        <section class="payment_method">
-          <h2 class="ship_head">Payment Method</h2>
-          <div class="card_info">
-            <div class="card_head">
-              <h2 class="card_title">Debit or Credit Card</h2>
+    <main className="container">
+      <div className="main">
+        <section className="payment_method">
+          <h2 className="ship_head">Payment Method</h2>
+          <div className="card_info">
+            <div className="card_head">
+              <h2 className="card_title">Debit or Credit Card</h2>
             </div>
-            <div class="card_types">
+            <div className="card_types">
               <img
-                class="card_img"
+                className="card_img"
                 src="https://cdn-icons-png.flaticon.com/512/349/349221.png"
                 alt=""
               />
               <img
-                class="card_img"
+                className="card_img"
                 src="https://cdn-icons-png.flaticon.com/512/349/349230.png"
                 alt=""
               />
               <img
-                class="card_img"
+                className="card_img"
                 src="https://cdn-icons-png.flaticon.com/512/349/349228.png"
                 alt=""
               />
               <img
-                class="card_img"
+                className="card_img"
                 src="https://img.icons8.com/fluency/512/mastercard.png"
                 alt=""
               />
@@ -89,7 +89,7 @@ const Paypal = () => {
                   }
                   onKeyDown={blockInvalidChar}
                   placeholder="11/25"
-                  maxlength="5"
+                  maxLength="5"
                 />
                 <Input
                   type="number"
@@ -110,65 +110,67 @@ const Paypal = () => {
                   isClosable: true,
                 });
               }}
-              class="save_card"
+              className="save_card"
             >
               Save Card
             </span>
           </div>
-          <div class="e_payment">
-            <div class="pay">
+          <div className="e_payment">
+            <div className="pay">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png"
                 alt=""
               />
             </div>
-            <div class="pay">
+            <div className="pay">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/5977/5977576.png"
                 alt=""
               />
             </div>
-            <div class="pay">
+            <div className="pay">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/196/196565.png"
                 alt=""
               />
             </div>
           </div>
-          <button class="confirm_btn">Confirm</button>
+          <button className="confirm_btn">Confirm</button>
         </section>
-        <section class="order_summary">
-          <h2 class="order_head">Order Summary</h2>
-          <div class="order_price">
+        <section className="order_summary">
+          <h2 className="order_head">Order Summary</h2>
+          <div className="order_price">
             <hr />
-            <div class="price">
+            <div className="price">
               <p>Order price:</p>
-              <p>${product.price}</p>
+              <p>${basketProducts.price}</p>
             </div>
-            <div class="price">
+            <div className="price">
               <p>Shipping:</p>
               <p>${shipping}</p>
             </div>
-            <div class="price">
+            <div className="price">
               <p>Tax:</p>
               <p>${tax}</p>
             </div>
             <br />
             <hr />
-            <div class="total_price">
-              <p class="dark">Total:</p>
-              <p class="dark">${shipping + tax + product.price}</p>
+            <div className="total_price">
+              <p className="dark">Total:</p>
+              <p className="dark">
+                ${shipping + tax + basketProducts.price * basketProducts.count}
+              </p>
             </div>
           </div>
           <img
-            class="qr_code"
+            className="qr_code"
             src="https://cdn-icons-png.flaticon.com/512/714/714390.png"
             alt=""
           />
-          <p class="condition">
+          <p className="condition">
             Pay and Confirm Order by QR Code Using <b>Mobile Application</b>
           </p>
-          <button class="review_btn">Review and Confirm</button>
+          <button className="review_btn">Review and Confirm</button>
         </section>
       </div>
     </main>

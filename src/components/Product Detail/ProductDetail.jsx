@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { MdLocalShipping } from "react-icons/md";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 
 export default function ProductDetail() {

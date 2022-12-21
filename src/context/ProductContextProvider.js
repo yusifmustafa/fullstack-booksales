@@ -5,11 +5,12 @@ export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
 const URL_PRODUCT_DETAIL = "/:id";
 const URL_BASKET_PRODUCTS = "/api/basketproducts";
-const INITIAL_STATE = {
+ const INITIAL_STATE = {
   products: [],
   product: {},
   sendToBasketProduct: [],
   user: {},
+  basketProducts: {},
 };
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
@@ -23,6 +24,7 @@ const ProductContextProvider = (props) => {
         sendToBasketProducts: sendToBasketProducts,
         deleteBasketProduct: deleteBasketProduct,
         handleOnChange: handleOnChange,
+        getBasketProductsById: getBasketProductsById,
       }}
     >
       {props.children}
@@ -56,16 +58,23 @@ const ProductContextProvider = (props) => {
     });
   }
   function sendToBasketProducts(id) {
-    Api.post(`http://127.0.0.1:3000/api/basketproducts/${id}`, id).then(() => {
+    Api.post(`http://127.0.0.1:5000/api/basketproducts/${id}`, id).then(() => {
       getAllProduct();
     });
   }
 
   function deleteBasketProduct(id) {
-    Api.delete(`http://127.0.0.1:3000/api/basketproducts/${id}`).then((rsp) => {
+    Api.delete(`http://127.0.0.1:5000/api/basketproducts/${id}`).then((rsp) => {
       const data = rsp?.data;
       setState({ ...state, sendToBasketProduct: data });
       getAllProduct();
+    });
+  }
+
+  function getBasketProductsById(id) {
+    Api.get(`http://127.0.0.1:5000/api/basketproducts/${id}`).then((rsp) => {
+      const data = rsp?.data;
+      data.map((item) => setState({ ...state, basketProducts: item }));
     });
   }
 };
