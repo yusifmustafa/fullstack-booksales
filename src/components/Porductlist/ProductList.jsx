@@ -50,7 +50,7 @@ const ProductList = () => {
                       20% ENDİRİM
                     </Badge>
                     <Text color="teal.600" textTransform="uppercase">
-                      Author:{item?.author}
+                      Yazıçı:{item?.author}
                     </Text>
 
                     <Heading

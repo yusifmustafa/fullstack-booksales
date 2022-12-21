@@ -1,6 +1,5 @@
 import {
   Box,
-  chakra,
   Container,
   Stack,
   Text,
@@ -14,10 +13,11 @@ import {
   useColorModeValue,
   List,
   ListItem,
+  useToast,
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { MdLocalShipping } from "react-icons/md";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 
 export default function ProductDetail() {
@@ -28,7 +28,8 @@ export default function ProductDetail() {
   useEffect(() => {
     context.getProductById(id);
   }, [id]);
-  const navigate = useNavigate();
+  const toast = useToast();
+
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -62,7 +63,7 @@ export default function ProductDetail() {
               fontWeight={300}
               fontSize={"2xl"}
             >
-              ${product?.price} USD
+              ₼{product?.price} AZN
             </Text>
           </Box>
 
@@ -92,16 +93,16 @@ export default function ProductDetail() {
                 textTransform={"uppercase"}
                 mb={"4"}
               >
-                Features
+                Məhsul haqqında
               </Text>
 
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <List spacing={2}>
-                  <ListItem>Price</ListItem>
-                  <ListItem>Product Name</ListItem> <ListItem>Author</ListItem>
+                  <ListItem>Qiymət</ListItem>
+                  <ListItem>Məhsul adı</ListItem> <ListItem>Yazıçı</ListItem>
                 </List>
                 <List spacing={2}>
-                  <ListItem>{product?.price} USD</ListItem>
+                  <ListItem>{product?.price} ₼</ListItem>
                   <ListItem>{product?.name}</ListItem>
                   <ListItem>{product?.author}</ListItem>
                 </List>
@@ -122,9 +123,19 @@ export default function ProductDetail() {
               transform: "translateY(2px)",
               boxShadow: "lg",
             }}
-            onClick={() => navigate(`/paypalpage/${product.id}`)}
+            onClick={() => {
+              context.sendToBasketProducts(product.id);
+              toast({
+                title: "Məhsul səbətə əlavə edildi!",
+                description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
+                position: "top-right",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+              });
+            }}
           >
-            Add to cart
+            Səbətə Əlavə et
           </Button>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>

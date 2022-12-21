@@ -23,10 +23,10 @@ const Paypal = () => {
     <main className="container">
       <div className="main">
         <section className="payment_method">
-          <h2 className="ship_head">Payment Method</h2>
+          <h2 className="ship_head">Ödəniş üsulu</h2>
           <div className="card_info">
             <div className="card_head">
-              <h2 className="card_title">Debit or Credit Card</h2>
+              <h2 className="card_title">Debit və ya Kredit Kartı</h2>
             </div>
             <div className="card_types">
               <img
@@ -61,7 +61,7 @@ const Paypal = () => {
                     value: event.target.value,
                   })
                 }
-                placeholder="Card Holder"
+                placeholder="Kart sahibinin adı soyadı"
               />
               <Input
                 type="number"
@@ -74,7 +74,7 @@ const Paypal = () => {
                   })
                 }
                 onInput={(e) => (e.target.value = e.target.value.slice(0, 16))}
-                placeholder="Card Number"
+                placeholder="Kart nömrəsi"
               />
               <div>
                 <Input
@@ -89,7 +89,6 @@ const Paypal = () => {
                     })
                   }
                   onKeyDown={blockInvalidChar}
-                  placeholder="11/25"
                   maxLength="5"
                 />
                 <Input
@@ -113,7 +112,7 @@ const Paypal = () => {
               }}
               className="save_card"
             >
-              Save Card
+              Kartı yadda saxla
             </span>
           </div>
           <div className="e_payment">
@@ -136,30 +135,30 @@ const Paypal = () => {
               />
             </div>
           </div>
-          <button className="confirm_btn">Confirm</button>
+          <button className="confirm_btn">Təsdiqlə</button>
         </section>
         <section className="order_summary">
-          <h2 className="order_head">Order Summary</h2>
+          <h2 className="order_head">Sifariş Xülasəsi</h2>
           <div className="order_price">
             <hr />
             <div className="price">
-              <p>Order price:</p>
-              <p>${basketProducts.price}</p>
+              <p>Məhsulun Qiyməti:</p>
+              <p>₼{basketProducts.price}</p>
             </div>
             <div className="price">
-              <p>Shipping:</p>
-              <p>${shipping}</p>
+              <p>Karqo qiyməti:</p>
+              <p>₼{shipping}</p>
             </div>
             <div className="price">
-              <p>Tax:</p>
-              <p>${tax}</p>
+              <p>Vergi haqqı:</p>
+              <p>₼{tax}</p>
             </div>
             <br />
             <hr />
             <div className="total_price">
-              <p className="dark">Total:</p>
+              <p className="dark">Ümumi:</p>
               <p className="dark">
-                ${shipping + tax + basketProducts.price * basketProducts.count}
+                ₼{shipping + tax + basketProducts.price * basketProducts.count}
               </p>
             </div>
           </div>
@@ -169,9 +168,9 @@ const Paypal = () => {
             alt=""
           />
           <p className="condition">
-            Pay and Confirm Order by QR Code Using <b>Mobile Application</b>
+            <b>Mobil Tətbiqdən</b> istifadə edərək QR kodu ilə Sifarişi ödəyin
+            və təsdiqləyin
           </p>
-          <button className="review_btn">Review and Confirm</button>
         </section>
       </div>
     </main>
