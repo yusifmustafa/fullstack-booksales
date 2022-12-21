@@ -60,3 +60,7 @@
   letter-spacing: 1px;
   background: none;
 }
+
+.nav .left .text:hover {
+  color: #2b6cb0;
+}

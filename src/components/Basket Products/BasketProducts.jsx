@@ -64,11 +64,6 @@ const BasketProducts = (props) => {
                 Əsas Səhifəyə qayıdaraq alış-veriş etməyə davam edin
               </AlertDescription>
             </Alert>
-            // <Stack>
-            //   <Skeleton height="20px" />
-            //   <Skeleton height="20px" />
-            //   <Skeleton height="20px" />
-            // </Stack>
           )}
         </ul>
 
