@@ -43,9 +43,20 @@
   margin-right: 15px;
 }
 
- .nav .right .icon{
-  color:#2b6cb0;
+.nav .right .icon {
+  color: #2b6cb0;
   font-size: 1.5rem;
   margin-right: 15px;
   cursor: pointer;
- }
+}
+
+.nav .left .text {
+  font-size: 1.8em;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  margin-left: 0.75rem;
+  text-transform: uppercase;
+  line-height: 10px;
+  letter-spacing: 1px;
+  background: none;
+}

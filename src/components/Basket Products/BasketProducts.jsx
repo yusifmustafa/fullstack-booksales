@@ -14,12 +14,10 @@ import { ProductContext } from "../../context/ProductContextProvider";
 import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
 const BasketProducts = (props) => {
-   const context = useContext(ProductContext);
-  const { sendToBasketProduct } = context;
+  const context = useContext(ProductContext);
+  let { sendToBasketProduct, subTotal } = context;
   console.log("sendToBasketProduct: ", sendToBasketProduct);
-  let total = 0;
-  let tax = 0;
-  let shipping = 0;
+  console.log("subtotal", subTotal);
 
   useEffect(() => {
     context.getBasketProducts();
@@ -27,21 +25,20 @@ const BasketProducts = (props) => {
 
   return (
     <div className="wrap cf">
-      <h1 className="projTitle">Basket</h1>
+      <h1 className="projTitle">Səbətİnİz</h1>
       <div className="heading cf">
-        <h1>My Cart</h1>
+        <h1>Məhsullar</h1>
         <Link to="/" className="continue">
-          Continue Shopping
+          Əsas səhifə
         </Link>
       </div>
       <div className="cart">
         <ul className="cartWrap">
           {sendToBasketProduct.length ? (
             sendToBasketProduct.map((item) => {
-              total = total + shipping + tax + item.price * item.count;
-              shipping = parseInt(total / 6);
-              tax = parseInt(total / 10);
-              console.log("itemmm: ", item);
+              // total = item.price * item.count;
+              // shipping = parseInt(total / 10);
+              // tax = parseInt(total / 8);
               return (
                 <div key={item.id}>
                   <BasketProductItem item={item} />
@@ -76,7 +73,7 @@ const BasketProducts = (props) => {
         </ul>
 
         <div className="promoCode">
-          <label htmlFor="promo">Have A Promo Code?</label>
+          <label htmlFor="promo">Promo kodunuz var?</label>
           <input type="text" name="promo" placholder="Enter Code" />
           <a href="#" className="btn"></a>
         </div>
@@ -84,18 +81,18 @@ const BasketProducts = (props) => {
         <div className="subtotal cf">
           <ul>
             <li className="totalRow">
-              <span className="label">Shipping</span>
-              <span className="value">${shipping}</span>
+              <span className="label">Çatdırılma</span>
+              {/* <span className="value">${shipping}</span> */}
             </li>
 
             <li className="totalRow">
-              <span className="label">Tax</span>
-              <span className="value">${tax}</span>
+              <span className="label">Vergİ dəyərİ</span>
+              {/* <span className="value">${tax}</span> */}
             </li>
 
             <li className="totalRow final">
-              <span className="label">Total</span>
-              <span className="value">${total} </span>
+              <span className="label">Ümumİ Qİymət</span>
+              {/* <span className="value">${total} </span> */}
             </li>
 
             <li className="totalRow">
@@ -106,9 +103,10 @@ const BasketProducts = (props) => {
                 colorScheme="blue"
                 borderRadius="50px"
                 width="220px"
-                height="70px"
+                height="60px"
+                fontSize="1.3em"
               >
-                Checkout
+                İRƏLİ
               </Button>
             </li>
           </ul>

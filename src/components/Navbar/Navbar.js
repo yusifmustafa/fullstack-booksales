@@ -1,20 +1,21 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Navbar = () => {
+  const navigateToHomePage = () => {
+    navigate("/");
+  };
+  const navigate = useNavigate();
   return (
     <nav className={styles.nav}>
       <div className={styles.left}>
         <div className="logo">
-          <Link to="/">BookSales</Link>
+          <Button className={styles.text} onClick={navigateToHomePage}>
+            Məhsullar
+          </Button>
         </div>
-        <ul className={styles.menu}>
-          <li>
-            <Link to="/">Products</Link>
-          </li>
-        </ul>
       </div>
 
       <div className={styles.right}>
@@ -24,10 +25,10 @@ const Navbar = () => {
           </Link>
         </div>
         <Link to="/signin">
-          <Button colorScheme="blue">Login</Button>
+          <Button colorScheme="blue">Giriş</Button>
         </Link>
         <Link to="/signup">
-          <Button colorScheme="blue">Register</Button>
+          <Button colorScheme="blue">Qeydiyyat</Button>
         </Link>
       </div>
     </nav>

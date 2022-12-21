@@ -54,7 +54,7 @@ const Paypal = () => {
               <Input
                 type="text"
                 name="cardholder"
-                value={user.cardholder}
+                value={user.cardholder ? user.cardholder : ""}
                 onChange={(event) =>
                   handleOnChange({
                     name: event.target.name,
@@ -66,20 +66,21 @@ const Paypal = () => {
               <Input
                 type="number"
                 name="cardnumber"
-                value={user.cardnumber}
+                value={user.cardnumber ? user.cardnumber : ""}
                 onChange={(event) =>
                   handleOnChange({
                     name: event.target.name,
                     value: event.target.value,
                   })
                 }
+                onInput={(e) => (e.target.value = e.target.value.slice(0, 16))}
                 placeholder="Card Number"
               />
               <div>
                 <Input
                   type="month"
                   name="date"
-                  value={user.date}
+                  value={user.date ? user.date : ""}
                   min="2020-08"
                   onChange={(event) =>
                     handleOnChange({

@@ -8,8 +8,7 @@ import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
   const { item, increaseCount } = props;
   const context = useContext(ProductContext);
-  console.log("item: ", item);
-
+ 
   return (
     <>
       <li key={item.BPid} className="items odd">
@@ -22,7 +21,7 @@ const BasketProductItem = (props) => {
               <h1>{item?.name}</h1>
               <div className="deleteandprice">
                 <div className="prodTotal cartSection">
-                  <p>${item?.price}</p>
+                  <p>₼{item?.price}</p>
                   <Button
                     onClick={() => context.deleteBasketProduct(item.BPid)}
                     className="remove"
@@ -39,7 +38,7 @@ const BasketProductItem = (props) => {
             <div>
               <h2>Genre: {item?.genre}</h2>
             </div>
-            <p className="stockStatus"> In Stock</p>
+            <p className="stockStatus"> Stokda var</p>
             <div className="cartSection removeWrap"></div>{" "}
             <div className="incdecbutton">
               <div className="buttons">
@@ -56,7 +55,7 @@ const BasketProductItem = (props) => {
               </div>
             </div>
             <Link className="addtocartbtn" to={`/paypalpage/${item.BPid}`}>
-              Add to cart
+              İndİ Al
             </Link>
           </div>
         </div>

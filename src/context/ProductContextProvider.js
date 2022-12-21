@@ -5,12 +5,13 @@ export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
 const URL_PRODUCT_DETAIL = "/:id";
 const URL_BASKET_PRODUCTS = "/api/basketproducts";
- const INITIAL_STATE = {
+const INITIAL_STATE = {
   products: [],
   product: {},
   sendToBasketProduct: [],
   user: {},
   basketProducts: {},
+  subTotal: 0,
 };
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
