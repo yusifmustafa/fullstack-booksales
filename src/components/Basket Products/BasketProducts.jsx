@@ -13,11 +13,9 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
-const BasketProducts = (props) => {
+const BasketProducts = () => {
   const context = useContext(ProductContext);
   let { sendToBasketProduct, subTotal } = context;
-  console.log("sendToBasketProduct: ", sendToBasketProduct);
-  console.log("subtotal", subTotal);
 
   useEffect(() => {
     context.getBasketProducts();
@@ -36,9 +34,6 @@ const BasketProducts = (props) => {
         <ul className="cartWrap">
           {sendToBasketProduct.length ? (
             sendToBasketProduct.map((item) => {
-              // total = item.price * item.count;
-              // shipping = parseInt(total / 10);
-              // tax = parseInt(total / 8);
               return (
                 <div key={item.id}>
                   <BasketProductItem item={item} />
@@ -87,7 +82,7 @@ const BasketProducts = (props) => {
 
             <li className="totalRow final">
               <span className="label">Ümumİ Qİymət</span>
-              {/* <span className="value">${total} </span> */}
+              <span className="value">${subTotal} </span>
             </li>
 
             <li className="totalRow">

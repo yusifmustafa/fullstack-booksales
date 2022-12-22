@@ -1,7 +1,7 @@
 :root {
   --loading-grey: #ededed;
 }
-.card {
+.cardd {
   width: 1550px;
   background-color: #fff;
   border-radius: 6px;
@@ -10,11 +10,11 @@
   margin-bottom: 8rem;
 }
 
-.image {
-  height: 500px;
+.imagee {
+  height: 400px;
 }
 
-.image img {
+.imagee img {
   display: block;
   width: 100%;
   height: inherit;
@@ -36,7 +36,7 @@ h4 {
   line-height: 1.4rem;
 }
 
-.loading .image,
+.loading .imagee,
 .loading h4,
 .loading .description {
   background-color: var(--loading-grey);
@@ -68,4 +68,52 @@ h4 {
   min-height: 4rem;
   border-radius: 4px;
   animation-delay: 0.06s;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+body .card {
+  border-radius: 10px;
+  transition: 0.5s ease-in-out;
+  margin: 1.5rem;
+  margin-top: 1rem;
+}
+body .card:hover {
+  transform: scale(1.02);
+  transition: 0.5s ease-in-out;
+}
+body .card .image-css {
+  position: relative;
+}
+body .card .image-css img {
+  width: 100%;
+  max-height: 400px;
+  border-radius: 10px 10px 0px 0px;
+}
+body .card .image-css i {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 28px;
+  color: #989898;
+  transition: 0.5s ease-in-out;
+}
+body .card .image-css i:hover {
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.8);
+  transition: 0.5s ease-in-out;
+}
+body .card .card-body {
+  text-align: center;
+}
+body .card .card-body a {
+  margin: 0px auto;
+  text-decoration: none;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -11,8 +11,9 @@ const INITIAL_STATE = {
   sendToBasketProduct: [],
   user: {},
   basketProducts: {},
-  subTotal: 0,
+  count: 0,
 };
+console.log("counttt: ", INITIAL_STATE.count);
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   return (
@@ -26,6 +27,8 @@ const ProductContextProvider = (props) => {
         deleteBasketProduct: deleteBasketProduct,
         handleOnChange: handleOnChange,
         getBasketProductsById: getBasketProductsById,
+        incrementValue: incrementValue,
+        decrementValue: decrementValue,
       }}
     >
       {props.children}
@@ -77,6 +80,26 @@ const ProductContextProvider = (props) => {
       const data = rsp?.data;
       data.map((item) => setState({ ...state, basketProducts: item }));
     });
+  }
+
+  function incrementValue(id) {
+    const data = state.sendToBasketProduct;
+    (data ? data : []).forEach((item) => {
+      if (id === item.id) {
+        let value = (item.count += 1);
+        setState({ count: value });
+        console.log("valuee:", value);
+      }
+    });
+    setState({ ...state, sendToBasketProduct: data });
+  }
+
+  function decrementValue(id) {
+    const data = state.sendToBasketProduct;
+    (data ? data : []).forEach((item) => {
+      if (id === item.id) item.count -= 1;
+    });
+    setState({ ...state, sendToBasketProduct: data });
   }
 };
 

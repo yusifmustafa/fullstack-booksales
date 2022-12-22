@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 
 const BasketProductItem = (props) => {
-  const { item, increaseCount } = props;
+  const { item } = props;
+
   const context = useContext(ProductContext);
- 
+  const { incrementValue, decrementValue,count } = context;
   return (
     <>
       <li key={item.BPid} className="items odd">
@@ -42,13 +43,17 @@ const BasketProductItem = (props) => {
             <div className="cartSection removeWrap"></div>{" "}
             <div className="incdecbutton">
               <div className="buttons">
-                <Button colorScheme="blue" onClick={() => increaseCount()}>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => incrementValue(item.id)}
+                >
                   +
                 </Button>
-                <span className="incdecvalue">{item.count}</span>
+                <span className="incdecvalue">{count}</span>
                 <Button
+                  onClick={() => decrementValue(item.id)}
                   disabled={item.count === 1}
-                   colorScheme="blue"
+                  colorScheme="blue"
                 >
                   -
                 </Button>
