@@ -1,3 +1,6 @@
+body {
+  background-color: #d9843f;
+}
 :root {
   --loading-grey: #ededed;
 }
@@ -81,9 +84,9 @@ body .card {
   margin-top: 1rem;
 }
 body .card:hover {
-  transform: scale(1.02);
-  transition: 0.5s ease-in-out;
-}
+  transform: scale(1.06);
+  transition: 0.3s ease-in-out;
+ }
 body .card .image-css {
   position: relative;
 }
@@ -97,7 +100,7 @@ body .card .image-css i {
   top: 25px;
   right: 25px;
   font-size: 28px;
-  color: #989898;
+  color: #ffffff;
   transition: 0.5s ease-in-out;
 }
 body .card .image-css i:hover {
@@ -113,7 +116,13 @@ body .card .card-body a {
   text-decoration: none;
 }
 
-.products {
+/* .products {
   display: flex;
   flex-wrap: wrap;
+}
+
+  */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }

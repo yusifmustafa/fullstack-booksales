@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   sendToBasketProduct: [],
   user: {},
   basketProducts: {},
-  count: 0,
+  count: 1,
 };
 console.log("counttt: ", INITIAL_STATE.count);
 const ProductContextProvider = (props) => {

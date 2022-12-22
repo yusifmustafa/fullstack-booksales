@@ -52,7 +52,7 @@ const BasketProductItem = (props) => {
                 <span className="incdecvalue">{count}</span>
                 <Button
                   onClick={() => decrementValue(item.id)}
-                  disabled={item.count === 1}
+                  disabled={count === 1}
                   colorScheme="blue"
                 >
                   -

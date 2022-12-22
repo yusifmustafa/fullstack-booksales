@@ -1,5 +1,15 @@
-import { Badge, Button, Text, useToast, Wrap } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Button,
+  Heading,
+  Text,
+  useToast,
+  Wrap,
+} from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
+import { Stack } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 import Carousell from "./Carousel";
 import "./ProductList.css";
@@ -85,58 +95,74 @@ const ProductList = () => {
             </div> */}
       {/* )} */}
       <div class="container">
-        <div class="row">
-          <div className="products">
-            {products ? (
-              products.map((item) => (
-                <div key={item.id} class="card mt-4 mb-4">
-                  <div class="image-css">
-                    <img
-                      src={item?.image}
-                      alt={item?.name}
-                      class="card-img-top"
-                    />
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                    <Badge ml="1" colorScheme="green">
-                      20% ENDİRİM
-                    </Badge>
-                  </div>
-                  <div class="card-body">
-                    <Text
-                      fontWeight="750"
-                      letterSpacing="1.1px"
-                      color="teal.600"
-                      textTransform="uppercase"
-                    >
-                      Yazıçı:{item?.author}
-                    </Text>
-                    <h3 class="card-text">Author: {item?.author}</h3>
-                    <hr />
-                    <h2>Casuals</h2>
-                    <Wrap
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        marginTop: "10%",
-                      }}
-                    >
-                      <Button colorScheme="blue">SƏBƏTƏ ƏLAVƏ ET</Button>
-                    </Wrap>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div class="cardd loading">
-                <div class="imagee"></div>
-                <div class="content">
-                  <h4></h4>
-                  <div class="description"></div>
+        <Box className="container" mt="25px" mb="20px">
+          <Stack className="row" p={{ base: "0 2rem" }}>
+              <div class="row">
+                <div className="products">
+                  {products ? (
+                    products.map((item) => (
+                      <div key={item.id} class="card mt-4 mb-4">
+                        <Link to={`productdetail/${item.id}`}>
+                        <div class="image-css">
+                          <img
+                            src={item?.image}
+                            alt={item?.name}
+                            class="card-img-top"
+                          />
+                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <Badge ml="1" colorScheme="green">
+                            20% ENDİRİM
+                          </Badge>
+                        </div>
+                          </Link>
+                        <div class="card-body">
+                          <Text
+                            fontWeight="750"
+                            letterSpacing="1.1px"
+                            color="teal.600"
+                            textTransform="uppercase"
+                            className="author-text"
+                          >
+                            Yazıçı:{item?.author}
+                          </Text>
+                          <hr />
+                          <Heading
+                            color="teal.700"
+                            size="md"
+                            textTransform="capitalize"
+                          >
+                            {item?.name}
+                          </Heading>
+                          <strong>₼{item?.price} </strong>
+                          <Box as="span" color="gray.600" fontSize="sm">
+                            {item?.genre}
+                          </Box>
+                          <Wrap
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              marginTop: "10%",
+                            }}
+                          >
+                            <Button colorScheme="blue">SƏBƏTƏ ƏLAVƏ ET</Button>
+                          </Wrap>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div class="cardd loading">
+                      <div class="imagee"></div>
+                      <div class="content">
+                        <h4></h4>
+                        <div class="description"></div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            )}
-          </div>
-        </div>
+          </Stack>
+        </Box>
       </div>
     </>
   );
