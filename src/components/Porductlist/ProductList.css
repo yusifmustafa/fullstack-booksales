@@ -1,16 +1,18 @@
-body {
-  background-color: #d9843f;
-}
 :root {
   --loading-grey: #ededed;
 }
 .cardd {
   width: 1550px;
-  background-color: #fff;
+  height: 100vh;
+  background-color: radial-gradient(
+    circle at 18.7% 37.8%,
+    rgb(250, 250, 250) 0%,
+    rgb(225, 234, 238) 90%
+  );
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.12);
-  margin-bottom: 8rem;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.12); */
+  margin-top: 1rem;
 }
 
 .imagee {
@@ -86,7 +88,7 @@ body .card {
 body .card:hover {
   transform: scale(1.06);
   transition: 0.3s ease-in-out;
- }
+}
 body .card .image-css {
   position: relative;
 }

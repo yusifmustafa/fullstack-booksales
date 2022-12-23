@@ -35,74 +35,26 @@ const ProductList = () => {
 
   return (
     <>
-      <Carousell />
-
-      {/* {products.length ? (
-            products.map((item) => (
-              <Card key={item.id} mt="25px" mb="20px">
-                <Box className="container" mt="25px" mb="20px">
-                  <Stack className="row" p={{ base: "0 2rem" }}>
-                    <Link to={`productdetail/${item.id}`}>
-                      <Image
-                        objectFit="cover"
-                        src={item?.image}
-                        alt={item?.name}
-                        borderRadius="15px"
-                        height="400px"
-                        className="image-fluid"
-                      />
-                      
-                      <Text color="teal.600" textTransform="uppercase">
-                        Yazıçı:{item?.author}
-                      </Text>
-
-                      <Heading
-                        color="teal.300"
-                        size="md"
-                        textTransform="capitalize"
-                      >
-                        {item?.name}
-                      </Heading>
-                      <Box>
-                        <strong>₼{item?.price} </strong>
-                        <Box as="span" color="gray.600" fontSize="sm">
-                          {item?.genre}
-                        </Box>
-                      </Box>
-                    </Link>
-                    <Wrap>
-                      <Button
-                        colorScheme="blue"
-                        onClick={() => {
-                          handleAddProductBasket(item.id);
-                        }}
-                      >
-                        SƏBƏTƏ ƏLAVƏ ET
-                      </Button>
-                    </Wrap>
-                  </Stack>
-                </Box>
-              </Card>
-            ))
-          ) : ( */}
-
-      {/* <div class="card loading">
-              <div class="image"></div>
-              <div class="content">
-                <h4></h4>
-                <div class="description"></div>
-              </div>
-            </div> */}
-      {/* )} */}
+      {products.length ? (
+        <Carousell />
+      ) : (
+        <div class="cardd loading">
+          <div class="imagee"></div>
+          <div class="content">
+            <h4></h4>
+            <div class="description"></div>
+          </div>
+        </div>
+      )}
       <div class="container">
         <Box className="container" mt="25px" mb="20px">
           <Stack className="row" p={{ base: "0 2rem" }}>
-              <div class="row">
-                <div className="products">
-                  {products ? (
-                    products.map((item) => (
-                      <div key={item.id} class="card mt-4 mb-4">
-                        <Link to={`productdetail/${item.id}`}>
+            <div class="row">
+              <div className="products">
+                {products ? (
+                  products.map((item) => (
+                    <div key={item.id} class="card mt-4 mb-4">
+                      <Link to={`productdetail/${item.id}`}>
                         <div class="image-css">
                           <img
                             src={item?.image}
@@ -114,8 +66,17 @@ const ProductList = () => {
                             20% ENDİRİM
                           </Badge>
                         </div>
-                          </Link>
-                        <div class="card-body">
+                      </Link>
+                      <div class="card-body">
+                        <div style={{height:"100px"}}>
+                          <Heading
+                            color="teal.700"
+                            size="md"
+                            textTransform="capitalize"
+                          >
+                            {item?.name}
+                          </Heading>
+                          <hr />
                           <Text
                             fontWeight="750"
                             letterSpacing="1.1px"
@@ -125,42 +86,37 @@ const ProductList = () => {
                           >
                             Yazıçı:{item?.author}
                           </Text>
-                          <hr />
-                          <Heading
-                            color="teal.700"
-                            size="md"
-                            textTransform="capitalize"
-                          >
-                            {item?.name}
-                          </Heading>
-                          <strong>₼{item?.price} </strong>
-                          <Box as="span" color="gray.600" fontSize="sm">
-                            {item?.genre}
+                          <Box>
+                            <strong>₼{item?.price} </strong>
+                            <Box as="span" color="gray.600" fontSize="sm">
+                              {item?.genre}
+                            </Box>
                           </Box>
-                          <Wrap
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              marginTop: "10%",
-                            }}
-                          >
-                            <Button colorScheme="blue">SƏBƏTƏ ƏLAVƏ ET</Button>
-                          </Wrap>
                         </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div class="cardd loading">
-                      <div class="imagee"></div>
-                      <div class="content">
-                        <h4></h4>
-                        <div class="description"></div>
+                        <Wrap
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginTop: "10%",
+                          }}
+                        >
+                          <Button colorScheme="blue">SƏBƏTƏ ƏLAVƏ ET</Button>
+                        </Wrap>
                       </div>
                     </div>
-                  )}
-                </div>
+                  ))
+                ) : (
+                  <div class="cardd loading">
+                    <div class="imagee"></div>
+                    <div class="content">
+                      <h4></h4>
+                      <div class="description"></div>
+                    </div>
+                  </div>
+                )}
               </div>
+            </div>
           </Stack>
         </Box>
       </div>
