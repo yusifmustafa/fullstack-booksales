@@ -169,6 +169,8 @@
   flex-direction: row;
   align-items: center;
   cursor: pointer;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .btn:hover {
