@@ -64,3 +64,28 @@
 .nav .left .text:hover {
   color: #2b6cb0;
 }
+
+@media screen and (max-width: 414px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav .right {
+    margin-right: 3rem;
+  }
+}

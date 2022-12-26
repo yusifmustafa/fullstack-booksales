@@ -46,8 +46,7 @@ export default function ProductDetail() {
             align={"center"}
             w={"70%"}
             h={"100%"}
-            // h={{ base: "100%", sm: "400px", lg: "500px" }}
-          />
+           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={"header"}>

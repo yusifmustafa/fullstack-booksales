@@ -1,350 +1,336 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(109.7deg, #32afd5 0%, #59ea68 50%, #c1dd52 100%);
-  font-family: "Inter", sans-serif;
-}
-
 .container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem auto;
-  position: relative;
+  margin-top: 3%;
+  background: url("../../Images/6071546.jpg");
+  font-family: "Inter", sans-serif;
+  background-position: 300px;
+  border-radius: 23px;
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
+  padding: 2rem;
 }
 
-.main {
-  background: rgba(69, 226, 235, 0.54);
+.paymentcard {
+  margin-right: 2rem;
   border-radius: 20px;
-  width: 80rem;
-  height: 40rem;
-  margin: auto;
-  position: relative;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-}
-/* Shipping Address Section */
-.shipping_address {
-  width: 55rem;
-  height: 17rem;
-  background-color: #fff;
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  border-radius: 10px;
-}
-.ship_head {
-  padding: 20px 0 20px 20px;
-  font-weight: 900;
-  font-size: 1.2rem;
+  background: #d5ffea;
+  box-shadow: 35px 35px 70px #576960, -35px -35px 70px #ffffff;
+  border: 1px solid rgb(177, 177, 177);
 }
 
-.addresses {
+.logoandtext {
+  display: flex;
+  justify-content: space-around;
+}
+.add_new_cardtext {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.addresses form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.address_primary {
-  width: 25rem;
-  height: 8rem;
-  border-radius: 10px;
-  background-color: #bcf7da;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.address_secondary {
-  width: 25rem;
-  height: 8rem;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.active1 {
-  background-color: #ffffff;
-}
-.active {
-  background-color: #bcf7da;
-}
-
-.info {
-  display: grid;
-  grid-template-columns: 20% 80%;
-  gap: 10px;
-  align-items: center;
-  padding: 5px 0 0 30px;
-  font-size: 15px;
-}
-
-.info .bold {
+.add_new_cardtext h3 {
   font-weight: 700;
 }
 
-.new_address {
-  font-weight: bold;
-  font-size: 15px;
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  text-transform: uppercase;
-  color: #068e14;
-  font-weight: bold;
-  transition: all 0.3s;
+.logo img {
+  width: 70px;
+  height: 70px;
 }
 
-.new_address:hover {
-  color: #07cb1a;
-  cursor: pointer;
+.cardinfo {
+  margin-top: 3rem;
 }
 
-/* Payment Method Section */
-.payment_method {
-  width: 55rem;
-  height: 35rem;
-  background-color: #fff;
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  border-radius: 10px;
-}
-
-.card_info {
-  width: 40rem;
-  height: 25rem;
-  background: #bcf7da;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  border-radius: 10px;
-  margin: 0 0 0 40px;
-  position: relative;
-}
-
-.card_head {
+.cardinfo .cardnumber {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 20px 0 0 20px;
 }
 
-.card_head .card_title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.card_head .btn1 {
-  width: 20px;
-  height: 20px;
-}
-
-.card_types {
+.cardinfo .cardowner {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 10px 0 0 60px;
 }
 
-.card_types .card_img {
-  width: 50px;
-  height: 50px;
-}
-
-.card_info form {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  padding: 10px 0 0 60px;
-}
-
-.card_info form input {
-  padding: 15px 30px 15px 16px;
-  margin-top: 20px;
-  font-size: 15px;
-  text-transform: capitalize;
-  outline: none;
-  border: none;
-  border-radius: 50px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-}
-
-.card_info form div {
-  display: flex;
-  gap: 70px;
-}
-
-.save_card {
-  font-weight: bold;
-  font-size: 15px;
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  text-transform: uppercase;
-  color: #068e14;
-  font-weight: bold;
-  transition: all 0.3s;
-}
-
-.save_card:hover {
-  color: #07cb1a;
-  cursor: pointer;
-}
-
-.e_payment {
-  position: absolute;
-  top: 70px;
-  right: 50px;
-}
-
-.e_payment img {
-  width: 100px;
-  height: 100px;
-  padding: 20px;
-  margin-bottom: 15px;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
-  transition: all 0.2s;
-}
-
-.e_payment img:hover {
-  cursor: pointer;
-  transform: rotateZ(360deg);
-}
-
-.confirm_btn {
-  background: #ff6868;
-  padding: 10px 50px;
-  font-size: 17px;
-  font-weight: bold;
-  color: #fff;
-  position: absolute;
-  right: 50px;
-  bottom: 30px;
-  border-radius: 50px;
-  border: none;
-  filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.25));
-  transition: all 0.3s;
-}
-
-.confirm_btn:hover {
-  background: #fd2d2d;
-  cursor: pointer;
-  scale: 1.1;
-}
-
-/* Order Summary Section */
-.order_summary {
-  width: 20rem;
-  height: 35rem;
-  position: absolute;
-  top: 0;
-  right: 25px;
-}
-
-.order_head {
-  padding: 20px 0 20px 80px;
-  font-weight: 900;
-  font-size: 1.2rem;
-}
-
-hr {
-  border: none;
-  border-top: 0.5px solid black;
-}
-
-.order_price {
-  display: grid;
-  grid-template-columns: repeat(1, 4fr);
-  margin-top: 20px;
-}
-.price,
-.total_price {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.dark {
-  font-weight: bold;
-}
-
-.qr_code {
-  width: 10rem;
-  height: 10rem;
+.cardinfo .dateandcvc {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  margin-top: 70px;
+  flex-wrap: wrap;
+  margin-right: 4%;
 }
 
-.condition {
-  margin-top: 40px;
-  width: 100%;
-  font-size: 15px;
+.cardinfo .carddate {
+  width: 210px;
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
 }
 
-.review_btn {
-  display: none;
-  background: #ff6868;
-  padding: 10px 60px;
-  margin: 30px 0 0 25px;
-  font-size: 17px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 50px;
-  border: none;
-  filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.25));
-  transition: all 0.3s;
+.cardinfo .cardcvc {
+  width: 110px;
+  display: flex;
+  align-items: center;
 }
 
-.review_btn:hover {
-  background: #fd2d2d;
-  cursor: pointer;
-  scale: 1.1;
+.ordersummary {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 20px 20px 0px 0px;
+  -moz-border-radius: 20px 20px 0px 0px;
+  -webkit-border-radius: 20px 20px 0px 0px;
+  border: 0px solid #000000;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgb(177, 177, 177);
 }
 
-.project_by {
-  position: absolute;
-  bottom: 50px;
-  right: 85px;
-  font-size: 13px;
-  text-align: center;
+.order_summary_text {
+  display: flex;
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  align-items: center;
+  margin-left: 1.5rem;
 }
-.project_by span {
-  font-size: 20px;
+.order_summary_text h3 {
+  margin-left: 0.75rem;
+  font-weight: 600;
+}
+
+.product_detail {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.product_detail .price_portion {
+  display: flex;
+  font-weight: 700;
+  margin-left: 3rem;
+}
+
+.product_detail .price_portion .portion {
+  margin-right: 1rem;
+}
+
+.product_about {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.product_about .product_name_img {
+  display: flex;
+  align-items: center;
+}
+.product_about .product_name_img img {
+  width: 30px;
+  height: 40px;
+  margin-right: 0.75rem;
+}
+
+.product_about .price_portion {
+  display: flex;
+}
+
+.product_about .price_portion h3 {
+  margin-right: 2rem;
+}
+
+.total {
+  display: flex;
+  margin-right: 1rem;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.total_price {
   text-transform: uppercase;
+  font-weight: 700;
+  line-height: 5;
+  float: right;
+  margin-right: 1rem;
+}
+.total h4 {
+  margin-top: 0.75rem;
+}
+.total h2 {
+  margin-top: 0.75rem;
+}
+
+.total h5 {
+  margin-top: 0.75rem;
+}
+
+.btn {
+  font-weight: 0;
+  font-size: 14px;
+  padding: 10px 30px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+  border-radius: 50px;
+  transition: 1000ms;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transition: 1000ms;
+  padding: 10px 50px;
+  transform: translateY(-0px);
+  background-color: #fff;
+  color: #79ff67;
+}
+
+.da-code {
+  position: relative;
+  font-size: 8px;
+  height: 1em;
+  /* change the size of this to see how ralph will scale up or down */
+  width: 1em;
+  margin: 0 34em 34em 0;
+  float: left;
+  box-shadow: 8em 0 #000, 10em 0 #000, 11em 0 #000, 12em 0 #000, 14em 0 #000,
+    16em 0 #000, 12em 1em #000, 13em 1em #000, 14em 1em #000, 16em 1em #000,
+    8em 2em #000, 9em 2em #000, 10em 2em #000, 13em 2em #000, 14em 2em #000,
+    16em 2em #000, 9em 3em #000, 13em 3em #000, 14em 3em #000, 16em 3em #000,
+    10em 4em #000, 11em 4em #000, 12em 4em #000, 13em 4em #000, 14em 4em #000,
+    8em 5em #000, 10em 5em #000, 12em 5em #000, 13em 5em #000, 16em 5em #000,
+    8em 6em #000, 10em 6em #000, 12em 6em #000, 14em 6em #000, 16em 6em #000,
+    9em 7em #000, 14em 7em #000, 16em 7em #000, 0em 8em #000, 2em 8em #000,
+    6em 8em #000, 7em 8em #000, 10em 8em #000, 12em 8em #000, 15em 8em #000,
+    16em 8em #000, 19em 8em #000, 22em 8em #000, 24em 8em #000, 0em 9em #000,
+    1em 9em #000, 3em 9em #000, 5em 9em #000, 8em 9em #000, 10em 9em #000,
+    12em 9em #000, 13em 9em #000, 15em 9em #000, 16em 9em #000, 18em 9em #000,
+    19em 9em #000, 21em 9em #000, 23em 9em #000, 24em 9em #000, 5em 10em #000,
+    6em 10em #000, 7em 10em #000, 10em 10em #000, 11em 10em #000, 15em 10em #000,
+    16em 10em #000, 18em 10em #000, 19em 10em #000, 20em 10em #000,
+    21em 10em #000, 22em 10em #000, 24em 10em #000, 0em 11em #000, 1em 11em #000,
+    2em 11em #000, 3em 11em #000, 4em 11em #000, 5em 11em #000, 8em 11em #000,
+    9em 11em #000, 12em 11em #000, 14em 11em #000, 16em 11em #000,
+    18em 11em #000, 19em 11em #000, 21em 11em #000, 3em 12em #000, 4em 12em #000,
+    6em 12em #000, 8em 12em #000, 9em 12em #000, 10em 12em #000, 11em 12em #000,
+    15em 12em #000, 16em 12em #000, 18em 12em #000, 24em 12em #000,
+    3em 13em #000, 9em 13em #000, 10em 13em #000, 13em 13em #000, 15em 13em #000,
+    16em 13em #000, 17em 13em #000, 18em 13em #000, 19em 13em #000,
+    23em 13em #000, 24em 13em #000, 0em 14em #000, 1em 14em #000, 2em 14em #000,
+    4em 14em #000, 6em 14em #000, 8em 14em #000, 9em 14em #000, 11em 14em #000,
+    13em 14em #000, 15em 14em #000, 17em 14em #000, 18em 14em #000,
+    21em 14em #000, 22em 14em #000, 24em 14em #000, 3em 15em #000, 5em 15em #000,
+    9em 15em #000, 14em 15em #000, 15em 15em #000, 16em 15em #000,
+    17em 15em #000, 19em 15em #000, 0em 16em #000, 1em 16em #000, 6em 16em #000,
+    9em 16em #000, 11em 16em #000, 12em 16em #000, 14em 16em #000,
+    16em 16em #000, 17em 16em #000, 18em 16em #000, 19em 16em #000,
+    20em 16em #000, 23em 16em #000, 8em 17em #000, 9em 17em #000, 10em 17em #000,
+    12em 17em #000, 13em 17em #000, 16em 17em #000, 20em 17em #000,
+    22em 17em #000, 24em 17em #000, 8em 18em #000, 9em 18em #000, 12em 18em #000,
+    16em 18em #000, 18em 18em #000, 20em 18em #000, 21em 18em #000,
+    24em 18em #000, 9em 19em #000, 10em 19em #000, 11em 19em #000,
+    12em 19em #000, 14em 19em #000, 15em 19em #000, 16em 19em #000,
+    20em 19em #000, 24em 19em #000, 13em 20em #000, 14em 20em #000,
+    15em 20em #000, 16em 20em #000, 17em 20em #000, 18em 20em #000,
+    19em 20em #000, 20em 20em #000, 21em 20em #000, 24em 20em #000,
+    9em 21em #000, 10em 21em #000, 13em 21em #000, 15em 21em #000,
+    16em 21em #000, 17em 21em #000, 19em 21em #000, 20em 21em #000,
+    21em 21em #000, 22em 21em #000, 23em 21em #000, 8em 22em #000,
+    10em 22em #000, 11em 22em #000, 15em 22em #000, 16em 22em #000,
+    20em 22em #000, 23em 22em #000, 24em 22em #000, 13em 23em #000,
+    16em 23em #000, 19em 23em #000, 20em 23em #000, 8em 24em #000,
+    10em 24em #000, 11em 24em #000, 12em 24em #000, 13em 24em #000,
+    16em 24em #000, 17em 24em #000, 21em 24em #000, 24em 24em #000;
+  /* row 1 */
+  /* row 2 */
+  /* row 3 */
+  /* row 4 */
+  /* row 5 */
+  /* row 6 */
+  /* row 7 */
+  /* row 8 */
+  /* row 9 */
+  /* row 10 */
+  /* row 11 */
+  /* row 12 */
+  /* row 13 */
+  /* row 14 */
+  /* row 15 */
+  /* row 16 */
+  /* row 17 */
+  /* row 18 */
+  /* row 19 */
+  /* row 20 */
+  /* row 21 */
+  /* row 22 */
+  /* row 23 */
+  /* row 24 */
+  /* row 25 */
+}
+/* position markers */
+.qr_code {
+  display: flex;
+  flex-direction: column;
+  margin: 0.85rem;
+}
+.da-code:before {
+  content: "";
+  width: 3em;
+  height: 3em;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 2em;
+  box-shadow: 0 0 0 1em white, 0 0 0 2em #000, 18em 0 0 #000, 18em 0 0 1em white,
+    18em 0 0 2em #000, 0 18em 0 #000, 0 18em 0 1em white, 0 18em 0 2em #000;
+}
+.follow-me {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-decoration: none;
+}
+#qr1 {
+  font-size: 1px;
+}
+#qr2 {
+  font-size: 2px;
+}
+#qr3 {
+  font-size: 3px;
+}
+#qr4 {
+  font-size: 4px;
+}
+#qr5 {
+  font-size: 5px;
+}
+#qr6 {
+  font-size: 6px;
+}
+#qr7 {
+  font-size: 7px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .paymentcard {
+    width: 550px;
+    height: 500px;
+  }
+
+  .ordersummary {
+    width: 550px;
+    margin-top: 2rem;
+    margin-right: 4%;
+  }
+  .dateandcvc {
+    margin-left: 9%;
+  }
+
+  .carditem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .ordersummary {
+    width: 350px;
+  }
 }

@@ -4,22 +4,21 @@ import { Button } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
-
-const BasketProductItem = (props) => {
+ const BasketProductItem = (props) => {
   const { item } = props;
 
   const context = useContext(ProductContext);
-  const { incrementValue, decrementValue,count } = context;
+  const { incrementValue, decrementValue, count } = context;
   return (
     <>
       <li key={item.BPid} className="items odd">
         <div className="infoWrap">
           <div className="cartSection">
-            <div>
+            <div className="img-fluid">
               <img src={item?.image} alt="" className="itemImg" />
             </div>
             <div style={{ margin: "1rem" }}>
-              <h1>{item?.name}</h1>
+              <h1 className="name">{item?.name}</h1>
               <div className="deleteandprice">
                 <div className="prodTotal cartSection">
                   <p>₼{item?.price}</p>

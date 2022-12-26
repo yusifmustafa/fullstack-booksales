@@ -68,7 +68,7 @@ const ProductList = () => {
                         </div>
                       </Link>
                       <div class="card-body">
-                        <div style={{height:"100px"}}>
+                        <div style={{ height: "100px" }}>
                           <Heading
                             color="teal.700"
                             size="md"
@@ -82,11 +82,12 @@ const ProductList = () => {
                             letterSpacing="1.1px"
                             color="teal.600"
                             textTransform="uppercase"
+                            marginTop="0.55rem"
                             className="author-text"
                           >
                             Yazıçı:{item?.author}
                           </Text>
-                          <Box>
+                          <Box marginTop="0.75rem">
                             <strong>₼{item?.price} </strong>
                             <Box as="span" color="gray.600" fontSize="sm">
                               {item?.genre}
@@ -101,7 +102,12 @@ const ProductList = () => {
                             marginTop: "10%",
                           }}
                         >
-                          <Button colorScheme="blue">SƏBƏTƏ ƏLAVƏ ET</Button>
+                          <Button
+                            onClick={() => handleAddProductBasket(item.id)}
+                            colorScheme="blue"
+                          >
+                            SƏBƏTƏ ƏLAVƏ ET
+                          </Button>
                         </Wrap>
                       </div>
                     </div>
