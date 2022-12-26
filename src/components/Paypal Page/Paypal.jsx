@@ -1,7 +1,7 @@
 import { Button, FormLabel, Input } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import "./Paypal.css";
-import { FaCheckCircle, FaCreditCard, FaRegFileAlt } from "react-icons/fa";
+import { FaCheckCircle, FaRegFileAlt } from "react-icons/fa";
 import mastercard from "../../Images/mastercard.png";
 import { ProductContext } from "../../context/ProductContextProvider";
 import { useParams } from "react-router-dom";
@@ -16,8 +16,12 @@ const Paypal = () => {
 
   const context = useContext(ProductContext);
   const { handleOnChange, user, basketProducts } = context;
+  console.log("basketprodd", basketProducts);
+  let total = basketProducts.price * basketProducts.count;
+  let shipping = parseInt(total / 8);
+  let tax = parseInt(total / 6);
   return (
-    <div className="container">
+    <div className="container-md">
       <div className="carditem d-flex flex-wrap">
         <div className="paymentcard col-12 col-md-6 p-5">
           <div className="logoandtext">
@@ -151,10 +155,10 @@ const Paypal = () => {
               Ədəd <b>(1x)</b>
             </h2>
             <h4>
-              Karqo haqqı:<b>₼3</b>
+              Karqo haqqı:<b>{shipping}₼</b>
             </h4>
             <h5>
-              Vergi haqqı:<b>₼4</b>
+              Vergi haqqı:<b>{tax}₼</b>
             </h5>
           </div>
           <div
@@ -166,7 +170,7 @@ const Paypal = () => {
             }}
           ></div>
           <h3 className="total_price">
-            Toplam qİymət:<b>₼344</b>
+            Toplam qİymət:<b>{total}₼</b>
           </h3>
           <div className="qr_code">
             <div id="qr4" class="da-code"></div>

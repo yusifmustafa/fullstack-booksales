@@ -3,11 +3,8 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Box,
-  Button,
-  Skeleton,
-  Stack,
-} from "@chakra-ui/react";
+   Button,
+ } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
@@ -16,7 +13,6 @@ import "./BasketProducts.css";
 const BasketProducts = () => {
   const context = useContext(ProductContext);
   let { sendToBasketProduct, subTotal } = context;
-
   useEffect(() => {
     context.getBasketProducts();
   }, []);
@@ -34,7 +30,7 @@ const BasketProducts = () => {
         <ul className="cartWrap">
           {sendToBasketProduct.length ? (
             sendToBasketProduct.map((item) => {
-              return (
+               return (
                 <div key={item.id}>
                   <BasketProductItem item={item} />
                 </div>
@@ -65,7 +61,7 @@ const BasketProducts = () => {
         <div className="promoCode">
           <label htmlFor="promo">Promo kodunuz var?</label>
           <input type="text" name="promo" placholder="Enter Code" />
-          <a href="#" className="btn"></a>
+          <a style={{ height: 42 }} href="#/" className="btn"></a>
         </div>
 
         <div className="subtotal cf">

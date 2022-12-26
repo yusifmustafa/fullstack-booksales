@@ -38,36 +38,36 @@ const ProductList = () => {
       {products.length ? (
         <Carousell />
       ) : (
-        <div class="cardd loading">
-          <div class="imagee"></div>
-          <div class="content">
+        <div className="cardd loading">
+          <div className="imagee"></div>
+          <div className="content">
             <h4></h4>
-            <div class="description"></div>
+            <div className="description"></div>
           </div>
         </div>
       )}
-      <div class="container">
+      <div className="container">
         <Box className="container" mt="25px" mb="20px">
           <Stack className="row" p={{ base: "0 2rem" }}>
-            <div class="row">
+            <div className="row">
               <div className="products">
                 {products ? (
                   products.map((item) => (
-                    <div key={item.id} class="card mt-4 mb-4">
+                    <div key={item.id} className="card mt-4 mb-4">
                       <Link to={`productdetail/${item.id}`}>
-                        <div class="image-css">
+                        <div className="image-css">
                           <img
                             src={item?.image}
                             alt={item?.name}
-                            class="card-img-top"
+                            className="card-img-top"
                           />
-                          <i class="fa fa-heart" aria-hidden="true"></i>
+                          <i className="fa fa-heart" aria-hidden="true"></i>
                           <Badge ml="1" colorScheme="green">
                             20% ENDİRİM
                           </Badge>
                         </div>
                       </Link>
-                      <div class="card-body">
+                      <div className="card-body">
                         <div style={{ height: "100px" }}>
                           <Heading
                             color="teal.700"
@@ -113,11 +113,11 @@ const ProductList = () => {
                     </div>
                   ))
                 ) : (
-                  <div class="cardd loading">
-                    <div class="imagee"></div>
-                    <div class="content">
+                  <div className="cardd loading">
+                    <div className="imagee"></div>
+                    <div className="content">
                       <h4></h4>
-                      <div class="description"></div>
+                      <div className="description"></div>
                     </div>
                   </div>
                 )}

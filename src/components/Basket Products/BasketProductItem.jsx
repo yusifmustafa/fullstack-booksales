@@ -4,11 +4,11 @@ import { Button } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
- const BasketProductItem = (props) => {
+const BasketProductItem = (props) => {
   const { item } = props;
 
   const context = useContext(ProductContext);
-  const { incrementValue, decrementValue, count } = context;
+  const { incrementValue, decrementValue } = context;
   return (
     <>
       <li key={item.BPid} className="items odd">
@@ -48,10 +48,10 @@ import { ProductContext } from "../../context/ProductContextProvider";
                 >
                   +
                 </Button>
-                <span className="incdecvalue">{count}</span>
+                <span className="incdecvalue">{item.count}</span>
                 <Button
                   onClick={() => decrementValue(item.id)}
-                  disabled={count === 1}
+                  disabled={item.count === 1}
                   colorScheme="blue"
                 >
                   -

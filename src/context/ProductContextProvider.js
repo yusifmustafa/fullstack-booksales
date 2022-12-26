@@ -11,8 +11,8 @@ const INITIAL_STATE = {
   sendToBasketProduct: [],
   user: {},
   basketProducts: {},
-  count: 1,
 };
+console.log("totalPrice: ", INITIAL_STATE.totalPrice);
 console.log("counttt: ", INITIAL_STATE.count);
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
@@ -85,21 +85,22 @@ const ProductContextProvider = (props) => {
   function incrementValue(id) {
     const data = state.sendToBasketProduct;
     (data ? data : []).forEach((item) => {
+      let total = item.price * item.count;
       if (id === item.id) {
-        let value = (item.count += 1);
-        setState({ count: value });
-        console.log("valuee:", value);
+        item.count += 1;
+        setState({ ...state, count: item.count, totalPrice: total });
       }
     });
-    setState({ ...state, sendToBasketProduct: data });
   }
 
   function decrementValue(id) {
     const data = state.sendToBasketProduct;
     (data ? data : []).forEach((item) => {
-      if (id === item.id) item.count -= 1;
+      if (id === item.id) {
+        item.count -= 1;
+        setState({ ...state, count: item.count });
+      }
     });
-    setState({ ...state, sendToBasketProduct: data });
   }
 };
 
