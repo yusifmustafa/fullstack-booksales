@@ -9,6 +9,13 @@ const BasketProductItem = (props) => {
 
   const context = useContext(ProductContext);
   const { incrementValue, decrementValue } = context;
+
+  const handleDeleteProductFromBasket = (id) => {
+    context.deleteBasketProduct(id);
+    window.location.reload();
+    
+  };
+
   return (
     <>
       <li key={item.BPid} className="items odd">
@@ -23,7 +30,9 @@ const BasketProductItem = (props) => {
                 <div className="prodTotal cartSection">
                   <p>₼{item?.price}</p>
                   <Button
-                    onClick={() => context.deleteBasketProduct(item.BPid)}
+                    onClick={() => {
+                      handleDeleteProductFromBasket(item.BPid);
+                    }}
                     className="remove"
                     colorScheme="red"
                   >
