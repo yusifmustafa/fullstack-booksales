@@ -1,19 +1,28 @@
 import React, { useContext } from "react";
 
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
   const { item } = props;
+  const toast = useToast();
 
   const context = useContext(ProductContext);
   const { incrementValue, decrementValue } = context;
 
   const handleDeleteProductFromBasket = (id) => {
     context.deleteBasketProduct(id);
+    toast({
+      title: "Məhsul səbətdən silindi!",
+      description:
+      "Səbətinizə yeni məhsullar əlavə etmək üçün əsas səhifəyə qayıdın",
+      position: "top-right",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
     window.location.reload();
-    
   };
 
   return (

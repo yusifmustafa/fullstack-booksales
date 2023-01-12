@@ -28,7 +28,7 @@ const ProductList = () => {
       description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
       position: "top-right",
       status: "success",
-      duration: 9000,
+      duration: 2000,
       isClosable: true,
     });
   };
