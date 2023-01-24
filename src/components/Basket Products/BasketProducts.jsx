@@ -3,19 +3,32 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-   Button,
- } from "@chakra-ui/react";
+  Button,
+} from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
+import { useState } from "react";
 const BasketProducts = () => {
   const context = useContext(ProductContext);
-  let { sendToBasketProduct, subTotal } = context;
+  let { sendToBasketProduct } = context;
   useEffect(() => {
     context.getBasketProducts();
   }, []);
+  const [priceProduct, setPriceProduct] = useState(0);
+
+  let total = 0;
+  const pull_data = (data) => {
+    total += data;
+    setPriceProduct(total);
+  };
+
+  let shipping = parseInt(priceProduct / 8);
+  let tax = parseInt(priceProduct / 12);
+
+  let subTotal = priceProduct + shipping + tax;
 
   return (
     <div className="wrap cf">
@@ -30,9 +43,9 @@ const BasketProducts = () => {
         <ul className="cartWrap">
           {sendToBasketProduct.length ? (
             sendToBasketProduct.map((item) => {
-               return (
+              return (
                 <div key={item.id}>
-                  <BasketProductItem item={item} />
+                  <BasketProductItem item={item} func={pull_data} />
                 </div>
               );
             })
@@ -68,12 +81,12 @@ const BasketProducts = () => {
           <ul>
             <li className="totalRow">
               <span className="label">Çatdırılma</span>
-              {/* <span className="value">${shipping}</span> */}
+              <span className="value">${shipping}</span>
             </li>
 
             <li className="totalRow">
               <span className="label">Vergİ dəyərİ</span>
-              {/* <span className="value">${tax}</span> */}
+              <span className="value">${tax}</span>
             </li>
 
             <li className="totalRow final">

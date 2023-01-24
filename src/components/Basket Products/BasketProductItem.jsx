@@ -1,22 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { Button, useToast } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
+  const [quantity, setQuantity] = useState(1);
+
   const { item } = props;
   const toast = useToast();
 
   const context = useContext(ProductContext);
-  const { incrementValue, decrementValue } = context;
+
+  const handleIncrement = () => {
+    setQuantity((prevCount) => prevCount + 1);
+  };
+
+  const handleDecrement = () => {
+    setQuantity((prevCount) => prevCount - 1);
+  };
 
   const handleDeleteProductFromBasket = (id) => {
     context.deleteBasketProduct(id);
     toast({
       title: "Məhsul səbətdən silindi!",
       description:
-      "Səbətinizə yeni məhsullar əlavə etmək üçün əsas səhifəyə qayıdın",
+        "Səbətinizə yeni məhsullar əlavə etmək üçün əsas səhifəyə qayıdın",
       position: "top-right",
       status: "info",
       duration: 3000,
@@ -24,6 +33,9 @@ const BasketProductItem = (props) => {
     });
     window.location.reload();
   };
+
+  let itemPrice = quantity * item.price;
+  props.func(itemPrice);
 
   return (
     <>
@@ -37,7 +49,7 @@ const BasketProductItem = (props) => {
               <h1 className="name">{item?.name}</h1>
               <div className="deleteandprice">
                 <div className="prodTotal cartSection">
-                  <p>₼{item?.price}</p>
+                  <p>₼{itemPrice}</p>
                   <Button
                     onClick={() => {
                       handleDeleteProductFromBasket(item.BPid);
@@ -60,16 +72,13 @@ const BasketProductItem = (props) => {
             <div className="cartSection removeWrap"></div>{" "}
             <div className="incdecbutton">
               <div className="buttons">
-                <Button
-                  colorScheme="blue"
-                  onClick={() => incrementValue(item.id)}
-                >
+                <Button onClick={handleIncrement} colorScheme="blue">
                   +
                 </Button>
-                <span className="incdecvalue">{item.count}</span>
+                <span className="incdecvalue">{quantity}</span>
                 <Button
-                  onClick={() => decrementValue(item.id)}
-                  disabled={item.count === 1}
+                  onClick={handleDecrement}
+                  disabled={quantity === 1}
                   colorScheme="blue"
                 >
                   -

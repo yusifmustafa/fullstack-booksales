@@ -12,8 +12,7 @@ const INITIAL_STATE = {
   user: {},
   basketProducts: {},
 };
-console.log("totalPrice: ", INITIAL_STATE.totalPrice);
-console.log("counttt: ", INITIAL_STATE.count);
+
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   return (
@@ -27,8 +26,6 @@ const ProductContextProvider = (props) => {
         deleteBasketProduct: deleteBasketProduct,
         handleOnChange: handleOnChange,
         getBasketProductsById: getBasketProductsById,
-        incrementValue: incrementValue,
-        decrementValue: decrementValue,
       }}
     >
       {props.children}
@@ -77,27 +74,6 @@ const ProductContextProvider = (props) => {
     Api.get(`http://127.0.0.1:5000/api/basketproducts/${id}`).then((rsp) => {
       const data = rsp?.data;
       data.map((item) => setState({ ...state, basketProducts: item }));
-    });
-  }
-
-  function incrementValue(id) {
-    const data = state.sendToBasketProduct;
-    (data ? data : []).forEach((item) => {
-      let total = item.price * item.count;
-      if (id === item.id) {
-        item.count += 1;
-        setState({ ...state, count: item.count, totalPrice: total });
-      }
-    });
-  }
-
-  function decrementValue(id) {
-    const data = state.sendToBasketProduct;
-    (data ? data : []).forEach((item) => {
-      if (id === item.id) {
-        item.count -= 1;
-        setState({ ...state, count: item.count });
-      }
     });
   }
 };

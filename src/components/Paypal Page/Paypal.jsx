@@ -33,6 +33,7 @@ const Paypal = () => {
               <img src={mastercard} alt="card" />
             </div>
           </div>
+
           <div className="cardinfo">
             <div className="cardnumber">
               <FormLabel className="col-3">Card number</FormLabel>
