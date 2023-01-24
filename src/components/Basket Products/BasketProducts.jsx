@@ -81,17 +81,17 @@ const BasketProducts = () => {
           <ul>
             <li className="totalRow">
               <span className="label">Çatdırılma</span>
-              <span className="value">${shipping}</span>
+              <span className="value">₼{shipping}</span>
             </li>
 
             <li className="totalRow">
               <span className="label">Vergİ dəyərİ</span>
-              <span className="value">${tax}</span>
+              <span className="value">₼{tax}</span>
             </li>
 
             <li className="totalRow final">
               <span className="label">Ümumİ Qİymət</span>
-              <span className="value">${subTotal} </span>
+              <span className="value">₼{subTotal} </span>
             </li>
 
             <li className="totalRow">
