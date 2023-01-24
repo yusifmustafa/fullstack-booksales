@@ -4,22 +4,18 @@ import "./Paypal.css";
 import { FaCheckCircle, FaRegFileAlt } from "react-icons/fa";
 import mastercard from "../../Images/mastercard.png";
 import { ProductContext } from "../../context/ProductContextProvider";
-import { useParams } from "react-router-dom";
 export const blockInvalidChar = (e) =>
   ["e", "E", "+", "-", ",", "."].includes(e.key) && e.preventDefault();
 const Paypal = () => {
-  const { id } = useParams();
-
-  useEffect(() => {
-    context.getBasketProductsById(id);
-  }, [id]);
-
   const context = useContext(ProductContext);
-  const { handleOnChange, user, basketProducts } = context;
-  console.log("basketprodd", basketProducts);
-  let total = basketProducts.price * basketProducts.count;
-  let shipping = parseInt(total / 8);
-  let tax = parseInt(total / 6);
+  const { handleOnChange, user, sendToBasketProduct } = context;
+  console.log("sendToBasketProduct:", sendToBasketProduct);
+
+  useEffect(()=>{
+    
+  },[])
+
+
   return (
     <div className="container-md">
       <div className="carditem d-flex flex-wrap">
@@ -131,18 +127,20 @@ const Paypal = () => {
               marginTop: 10,
             }}
           ></div>
-          <div className="product_about">
-            <div className="product_name_img">
-              <img src={basketProducts.image} alt="book" />
-              <h3>{basketProducts.name}</h3>
+          {sendToBasketProduct.map((basketProducts) => (
+            <div className="product_about">
+              <div className="product_name_img">
+                <img src={basketProducts.image} alt="book" />
+                <h3>{basketProducts.name}</h3>
+              </div>
+              <div className="price_portion">
+                <h3>(x1)</h3>
+                <b>
+                  <h4>₼{basketProducts.price}</h4>
+                </b>
+              </div>
             </div>
-            <div className="price_portion">
-              <h3>(x1)</h3>
-              <b>
-                <h4>₼{basketProducts.price}</h4>
-              </b>
-            </div>
-          </div>
+          ))}
           <div
             style={{
               borderTop: "2px solid rgb(210, 210, 210) ",
@@ -156,10 +154,10 @@ const Paypal = () => {
               Ədəd <b>(1x)</b>
             </h2>
             <h4>
-              Karqo haqqı:<b>{shipping}₼</b>
+              Karqo haqqı:<b>{2}₼</b>
             </h4>
             <h5>
-              Vergi haqqı:<b>{tax}₼</b>
+              Vergi haqqı:<b>{3}₼</b>
             </h5>
           </div>
           <div
@@ -171,7 +169,7 @@ const Paypal = () => {
             }}
           ></div>
           <h3 className="total_price">
-            Toplam qİymət:<b>{total}₼</b>
+            Toplam qİymət:<b>{22}₼</b>
           </h3>
           <div className="qr_code">
             <div id="qr4" class="da-code"></div>

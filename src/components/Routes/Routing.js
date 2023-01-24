@@ -20,7 +20,6 @@ const Routing = () => {
           <Route path="/basketproducts" element={<BasketProducts />} />
           <Route path="/basketproducts/:id" element={<BasketProducts />} />
           <Route path="/paypalpage" element={<Paypal />} />
-          <Route path="/paypalpage/:id" element={<Paypal />} />
           <Route path="/signin" element={<LoginPage />} />
           <Route path="/signup" element={<RegisterPage />} />
         </Routes>

@@ -6,7 +6,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
@@ -23,6 +23,10 @@ const BasketProducts = () => {
   const pull_data = (data) => {
     total += data;
     setPriceProduct(total);
+  };
+  const navigate = useNavigate();
+  const navigateToPaypalPage = () => {
+    navigate("/paypalpage");
   };
 
   let shipping = parseInt(priceProduct / 8);
@@ -104,6 +108,9 @@ const BasketProducts = () => {
                 width="220px"
                 height="60px"
                 fontSize="1.3em"
+                onClick={() => {
+                  navigateToPaypalPage();
+                }}
               >
                 İRƏLİ
               </Button>

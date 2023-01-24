@@ -6,18 +6,23 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
   const [quantity, setQuantity] = useState(1);
-
+  console.log("quantity", quantity);
   const { item } = props;
+  console.log("item:", item);
   const toast = useToast();
 
   const context = useContext(ProductContext);
 
-  const handleIncrement = () => {
-    setQuantity((prevCount) => prevCount + 1);
+  const handleIncrement = (id) => {
+    if (id === item.id) {
+      setQuantity((item.count += 1));
+    }
   };
 
-  const handleDecrement = () => {
-    setQuantity((prevCount) => prevCount - 1);
+  const handleDecrement = (id) => {
+    if (id === item.id) {
+      setQuantity((item.count -= 1));
+    }
   };
 
   const handleDeleteProductFromBasket = (id) => {
@@ -34,7 +39,7 @@ const BasketProductItem = (props) => {
     window.location.reload();
   };
 
-  let itemPrice = quantity * item.price;
+  let itemPrice = item.count * item.price;
   props.func(itemPrice);
 
   return (
@@ -72,12 +77,19 @@ const BasketProductItem = (props) => {
             <div className="cartSection removeWrap"></div>{" "}
             <div className="incdecbutton">
               <div className="buttons">
-                <Button onClick={handleIncrement} colorScheme="blue">
+                <Button
+                  onClick={() => {
+                    handleIncrement(item.id);
+                  }}
+                  colorScheme="blue"
+                >
                   +
                 </Button>
                 <span className="incdecvalue">{quantity}</span>
                 <Button
-                  onClick={handleDecrement}
+                  onClick={() => {
+                    handleDecrement(item.id);
+                  }}
                   disabled={quantity === 1}
                   colorScheme="blue"
                 >
@@ -85,9 +97,6 @@ const BasketProductItem = (props) => {
                 </Button>
               </div>
             </div>
-            <Link className="addtocartbtn" to={`/paypalpage/${item.BPid}`}>
-              İndİ Al
-            </Link>
           </div>
         </div>
       </li>

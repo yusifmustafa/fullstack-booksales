@@ -25,10 +25,10 @@ const Navbar = () => {
           </Link>
         </div>
         <Link to="/signin">
-          <Button colorScheme="blue">Giriş</Button>
+          <Button colorScheme="facebook">Giriş</Button>
         </Link>
         <Link to="/signup">
-          <Button colorScheme="blue">Qeydiyyat</Button>
+          <Button colorScheme="facebook">Qeydiyyat</Button>
         </Link>
       </div>
     </nav>

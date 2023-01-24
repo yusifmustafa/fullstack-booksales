@@ -10,7 +10,6 @@ const INITIAL_STATE = {
   product: {},
   sendToBasketProduct: [],
   user: {},
-  basketProducts: {},
 };
 
 const ProductContextProvider = (props) => {
@@ -25,7 +24,6 @@ const ProductContextProvider = (props) => {
         sendToBasketProducts: sendToBasketProducts,
         deleteBasketProduct: deleteBasketProduct,
         handleOnChange: handleOnChange,
-        getBasketProductsById: getBasketProductsById,
       }}
     >
       {props.children}
@@ -67,13 +65,6 @@ const ProductContextProvider = (props) => {
   function deleteBasketProduct(id) {
     Api.delete(`http://127.0.0.1:5000/api/basketproducts/${id}`).then(() => {
       getAllProduct();
-    });
-  }
-
-  function getBasketProductsById(id) {
-    Api.get(`http://127.0.0.1:5000/api/basketproducts/${id}`).then((rsp) => {
-      const data = rsp?.data;
-      data.map((item) => setState({ ...state, basketProducts: item }));
     });
   }
 };

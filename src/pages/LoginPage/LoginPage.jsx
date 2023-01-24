@@ -21,17 +21,35 @@ const LoginPage = () => {
             <form>
               <FormControl>
                 <FormLabel>E-mail</FormLabel>
-                <Input placeholder="Email" size="md" />
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  size="md"
+                  required
+                />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Password</FormLabel>
-                <Input size="md" placeholder="password" />
+                <Input
+                  size="md"
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                  required
+                />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Confirm Password</FormLabel>
-                <Input placeholder="Confirm Password" size="md" />
+                <Input
+                  name="confirmpassword"
+                  placeholder="Confirm Password"
+                  type="password"
+                  size="md"
+                  required
+                />
               </FormControl>
-              <Button mt={4} type="submit" width="full">
+              <Button mt={4} type="submit" width="full" colorScheme="facebook">
                 Sign Up
               </Button>
             </form>
