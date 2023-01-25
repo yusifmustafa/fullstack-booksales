@@ -104,7 +104,7 @@ const BasketProducts = () => {
                   onClick={() => {
                     navigateToPaypalPage();
                   }}
-                  class="two"
+                  className="two"
                 >
                   Kartla ödəməyə <b>keç</b>
                 </button>

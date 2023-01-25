@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Api from "../utils/Api";
+import { Alert, AlertIcon, Stack, useToast } from "@chakra-ui/react";
 
 export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
@@ -10,9 +11,11 @@ const INITIAL_STATE = {
   product: {},
   sendToBasketProduct: [],
   user: {},
+  statusCode: true,
 };
 
 const ProductContextProvider = (props) => {
+  const toast = useToast();
   const [state, setState] = useState(INITIAL_STATE);
   return (
     <ProductContext.Provider
@@ -58,9 +61,30 @@ const ProductContextProvider = (props) => {
     });
   }
   function sendToBasketProducts(id) {
-    Api.post(`http://127.0.0.1:5000/api/basketproducts/${id}`, id).then(() => {
-      getAllProduct();
-    });
+    Api.post(`http://127.0.0.1:5000/api/basketproducts/${id}`, id).then(
+      (rsp) => {
+        console.log("sssss", rsp.data.result);
+        if (rsp.data.result === false) {
+          toast({
+            title: "Bu məhsul səbəttə mövcuddur!",
+            description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
+            position: "top-right",
+            status: "error",
+            duration: 2000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "Məhsul səbətə əlavə edildi!",
+            description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
+            position: "top-right",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+          });
+        }
+      }
+    );
   }
 
   function deleteBasketProduct(id) {
