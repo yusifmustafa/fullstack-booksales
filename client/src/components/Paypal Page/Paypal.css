@@ -117,6 +117,7 @@
 .product_about .product_name_img {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .product_about .product_name_img img {
   width: 30px;

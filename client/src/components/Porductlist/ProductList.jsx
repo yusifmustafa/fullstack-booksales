@@ -104,7 +104,7 @@ const ProductList = () => {
                         >
                           <Button
                             onClick={() => handleAddProductBasket(item.id)}
-                            colorScheme="blue"
+                            colorScheme="orange"
                           >
                             SƏBƏTƏ ƏLAVƏ ET
                           </Button>

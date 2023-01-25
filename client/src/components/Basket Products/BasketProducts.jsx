@@ -99,21 +99,11 @@ const BasketProducts = () => {
             </li>
 
             <li className="totalRow">
-              <Button
-                disabled={sendToBasketProduct.length === 0}
-                href="#"
-                className="btn continue"
-                colorScheme="blue"
-                borderRadius="50px"
-                width="220px"
-                height="60px"
-                fontSize="1.3em"
-                onClick={() => {
-                  navigateToPaypalPage();
-                }}
-              >
-                İRƏLİ
-              </Button>
+              <div>
+                <button class="two">
+                  Continue shopping <b>now</b>
+                </button>
+              </div>
             </li>
           </ul>
         </div>

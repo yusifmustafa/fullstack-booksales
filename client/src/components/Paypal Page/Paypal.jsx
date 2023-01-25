@@ -11,10 +11,9 @@ const Paypal = () => {
   const { handleOnChange, user, sendToBasketProduct } = context;
   console.log("sendToBasketProduct:", sendToBasketProduct);
 
-  useEffect(()=>{
-    
-  },[])
-
+  // useEffect(() => {
+  //   context.sendToBasketProducts();
+  // }, []);
 
   return (
     <div className="container-md">

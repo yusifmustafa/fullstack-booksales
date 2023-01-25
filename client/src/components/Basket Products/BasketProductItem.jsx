@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
-
+import "./BasketProductItem.css";
 import { Button, useToast } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
   const [quantity, setQuantity] = useState(1);
-  console.log("quantity", quantity);
   const { item } = props;
-  console.log("item:", item);
   const toast = useToast();
 
   const context = useContext(ProductContext);
@@ -81,7 +79,7 @@ const BasketProductItem = (props) => {
                   onClick={() => {
                     handleIncrement(item.id);
                   }}
-                  colorScheme="blue"
+                  colorScheme="orange"
                 >
                   +
                 </Button>
@@ -91,7 +89,7 @@ const BasketProductItem = (props) => {
                     handleDecrement(item.id);
                   }}
                   disabled={quantity === 1}
-                  colorScheme="blue"
+                  colorScheme="orange"
                 >
                   -
                 </Button>
