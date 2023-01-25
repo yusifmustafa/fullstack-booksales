@@ -35,7 +35,7 @@ img {
   text-align: center;
   font-size: 2em;
   padding: 1em 0;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #494949;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -217,7 +217,7 @@ items .cartSection .itemNumber {
   padding: 1em 1em 0;
   display: block;
   margin-top: 0.5em;
-  border-top: 1px solid #dadada;
+  border-top: 1px solid #161414;
 }
 .special .specialContent:before {
   content: "\21b3";
@@ -246,7 +246,8 @@ a.remove:hover {
   background: rgb(205, 71, 38);
 }
 .promoCode {
-  border: 2px solid #efefef;
+  border: 2px solid #afafaf;
+  border-radius: 5px;
   float: left;
   width: 35%;
   padding: 2%;
@@ -265,7 +266,7 @@ a.remove:hover {
   font-size: 1em;
   padding: 0.5em;
   float: left;
-  border: 1px solid #dadada;
+  border: 1px solid #8b8b8b;
 }
 .promoCode input:active,
 .promoCode input:focus {
@@ -331,6 +332,11 @@ a.remove:hover {
 .subtotal {
   float: right;
   width: 35%;
+  border-top: 5px double #d7792d;
+  border-bottom: 5px double #d7792d;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 .subtotal .totalRow {
   padding: 0.5em;

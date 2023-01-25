@@ -1,6 +1,6 @@
 .container-md {
   margin-top: 3%;
-   font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
   background-position: 300px;
   border-radius: 23px;
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
@@ -70,9 +70,7 @@
 .ordersummary {
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 20px 20px 0px 0px;
-  -moz-border-radius: 20px 20px 0px 0px;
-  -webkit-border-radius: 20px 20px 0px 0px;
+  border-radius: 20px;
   border: 0px solid #000000;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border: 1px solid rgb(177, 177, 177);
@@ -93,7 +91,7 @@
 
 .product_detail {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   font-weight: 700;
   margin-top: 1rem;
 }
@@ -111,7 +109,7 @@
 .product_about {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 0.25rem;
 }
 .product_about .product_name_img {

@@ -1,16 +1,25 @@
 import { Button, FormLabel, Input } from "@chakra-ui/react";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Paypal.css";
 import { FaCheckCircle, FaRegFileAlt } from "react-icons/fa";
 import mastercard from "../../Images/mastercard.png";
 import { ProductContext } from "../../context/ProductContextProvider";
+import Pagination from "../../pages/Pagination/Pagination";
 export const blockInvalidChar = (e) =>
   ["e", "E", "+", "-", ",", "."].includes(e.key) && e.preventDefault();
 const Paypal = () => {
   const context = useContext(ProductContext);
   const { handleOnChange, user, sendToBasketProduct } = context;
-  console.log("sendToBasketProduct:", sendToBasketProduct);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [employeesPerPage, setEmployeesPerPage] = useState(3);
 
+  const indexOfLastEmployee = currentPage * employeesPerPage;
+  const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
+  const currentEmployees = sendToBasketProduct.slice(
+    indexOfFirstEmployee,
+    indexOfLastEmployee
+  );
+  const totalPages = Math.ceil(sendToBasketProduct.length / employeesPerPage);
   useEffect(() => {
     context.getBasketProducts();
   }, []);
@@ -126,8 +135,8 @@ const Paypal = () => {
               marginTop: 10,
             }}
           ></div>
-          {sendToBasketProduct.map((basketProducts) => (
-            <div className="product_about">
+          {currentEmployees.map((basketProducts, index) => (
+            <div key={index} className="product_about">
               <div className="product_name_img">
                 <h3>{basketProducts.name}</h3>
               </div>
@@ -139,6 +148,7 @@ const Paypal = () => {
               </div>
             </div>
           ))}
+          <Pagination totalPages={totalPages} setCurrentPage={setCurrentPage} />
           <div
             style={{
               borderTop: "2px solid rgb(210, 210, 210) ",
@@ -170,7 +180,7 @@ const Paypal = () => {
             Toplam qİymət:<b>{22}₼</b>
           </h3>
           <div className="qr_code">
-            <div id="qr4" class="da-code"></div>
+            <div id="qr4" className="da-code"></div>
             <h2>
               Ödənişi <b>QR code</b> ilə edə bilərsiniz
             </h2>

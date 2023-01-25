@@ -1,0 +1,18 @@
+nav {
+  margin: 1rem;
+  padding: 0.25px;
+}
+.page-link {
+  color: orange;
+}
+
+.page-item.active .page-link {
+  background-color: orange;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.pagination {
+  --bs-pagination-padding-x: 0.45rem !important;
+}
