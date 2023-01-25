@@ -54,6 +54,7 @@ const ProductContextProvider = (props) => {
     Api.get(URL_BASKET_PRODUCTS).then((rsp) => {
       const data = rsp?.data;
       setState({ ...state, sendToBasketProduct: data });
+      console.log("data:", data);
     });
   }
   function sendToBasketProducts(id) {

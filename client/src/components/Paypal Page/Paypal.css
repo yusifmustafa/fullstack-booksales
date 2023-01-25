@@ -1,7 +1,6 @@
 .container-md {
   margin-top: 3%;
-  background: url("../../Images/6071546.jpg");
-  font-family: "Inter", sans-serif;
+   font-family: "Inter", sans-serif;
   background-position: 300px;
   border-radius: 23px;
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
@@ -113,6 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 0.25rem;
 }
 .product_about .product_name_img {
   display: flex;
@@ -123,6 +123,13 @@
   width: 30px;
   height: 40px;
   margin-right: 0.75rem;
+}
+.product_name_img h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px;
+  height: 1.2em;
+  white-space: nowrap;
 }
 
 .product_about .price_portion {

@@ -11,9 +11,9 @@ const Paypal = () => {
   const { handleOnChange, user, sendToBasketProduct } = context;
   console.log("sendToBasketProduct:", sendToBasketProduct);
 
-  // useEffect(() => {
-  //   context.sendToBasketProducts();
-  // }, []);
+  useEffect(() => {
+    context.getBasketProducts();
+  }, []);
 
   return (
     <div className="container-md">
@@ -61,7 +61,7 @@ const Paypal = () => {
                   })
                 }
                 onInput={(e) => (e.target.value = e.target.value.slice(0, 16))}
-                placeholder="Kart nömrəsi"
+                placeholder="Kart sahibi"
               />
             </div>
             <div className="dateandcvc">
@@ -129,7 +129,6 @@ const Paypal = () => {
           {sendToBasketProduct.map((basketProducts) => (
             <div className="product_about">
               <div className="product_name_img">
-                <img src={basketProducts.image} alt="book" />
                 <h3>{basketProducts.name}</h3>
               </div>
               <div className="price_portion">

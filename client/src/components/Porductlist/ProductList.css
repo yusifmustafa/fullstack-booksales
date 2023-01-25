@@ -2,7 +2,7 @@
   --loading-grey: #ededed;
 }
 .cardd {
-  width: 1550px;
+  width: 100%;
   height: 100vh;
   background-color: radial-gradient(
     circle at 18.7% 37.8%,

@@ -8,6 +8,7 @@ import {
   Wrap,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
+import Footer from "../../pages/Footer Page/Footer";
 import { Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
@@ -126,6 +127,7 @@ const ProductList = () => {
           </Stack>
         </Box>
       </div>
+      <Footer />
     </>
   );
 };

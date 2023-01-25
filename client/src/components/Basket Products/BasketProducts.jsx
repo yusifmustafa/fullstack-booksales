@@ -100,8 +100,13 @@ const BasketProducts = () => {
 
             <li className="totalRow">
               <div>
-                <button class="two">
-                  Continue shopping <b>now</b>
+                <button
+                  onClick={() => {
+                    navigateToPaypalPage();
+                  }}
+                  class="two"
+                >
+                  Kartla ödəməyə <b>keç</b>
                 </button>
               </div>
             </li>
