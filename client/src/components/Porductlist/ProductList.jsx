@@ -105,7 +105,9 @@ const ProductList = () => {
                             <i class="fas fa-shopping-cart "></i>
                           </Button>
                           <Button
-                            onClick={() => handleAddProductBasket(item.id)}
+                            onClick={() =>
+                              context.addProductToWishList(item.id)
+                            }
                             colorScheme="red"
                           >
                             <i class="fa-solid fa-heart"></i>{" "}

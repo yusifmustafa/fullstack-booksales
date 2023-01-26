@@ -33,7 +33,21 @@ app.post("/:id",(req,res)=>{
         else{
             res.send({result:false});
         }
-    })
+    });
+});
+
+app.delete("/:id",(req,res)=>{
+    const id = req.params.id;
+    database.query("DELETE FROM favoriteproducts WHERE id = ?",id,(err,result)=>{
+        if (err){
+            console.log(err);
+            res.send(false);
+        }
+        else{
+            res.send(result);
+        }
+    });
+    res.send(id);
 })
 
 

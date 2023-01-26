@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Api from "../utils/Api";
-import { Alert, AlertIcon, Stack, useToast } from "@chakra-ui/react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
@@ -12,6 +11,7 @@ const INITIAL_STATE = {
   product: {},
   sendToBasketProduct: [],
   user: {},
+  wishListProducts: [],
   statusCode: true,
 };
 
@@ -30,6 +30,8 @@ const ProductContextProvider = (props) => {
         sendToBasketProducts: sendToBasketProducts,
         deleteBasketProduct: deleteBasketProduct,
         handleOnChange: handleOnChange,
+        addProductToWishList: addProductToWishList,
+        getWishListProducts: getWishListProducts,
       }}
     >
       {props.children}
@@ -74,6 +76,18 @@ const ProductContextProvider = (props) => {
         }
       }
     );
+  }
+  function getWishListProducts() {
+    Api.get("http://127.0.0.1:5000/api/favproducts").then((rsp) => {
+      console.log(rsp);
+      setState({ ...state, wishListProducts: rsp.data });
+    });
+  }
+
+  function addProductToWishList(id) {
+    Api.post(`http://127.0.0.1:5000/api/favproducts/${id}`).then((rsp) => {
+      console.log(rsp);
+    });
   }
 
   function deleteBasketProduct(id) {

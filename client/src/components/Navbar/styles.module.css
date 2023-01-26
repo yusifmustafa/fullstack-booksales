@@ -49,9 +49,6 @@
   margin-right: 15px;
   cursor: pointer;
 }
-.nav .right .icon:hover {
-  color: #e48a3c !important;
-}
 
 .nav .left .text {
   font-size: 1.8em;

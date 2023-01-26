@@ -20,6 +20,9 @@ const Navbar = () => {
 
       <div className={styles.right}>
         <div className={styles.icon}>
+          <Link to="/wishlist">
+            <i class="fa-solid fa-heart"></i>
+          </Link>
           <Link to="/basketproducts">
             <i className="fas fa-cart-plus"></i>
           </Link>
