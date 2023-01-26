@@ -18,6 +18,7 @@ import { useContext, useEffect } from "react";
 import { MdLocalShipping } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
+import { ToastContainer } from "react-toastify";
 
 export default function ProductDetail() {
   const context = useContext(ProductContext);
@@ -133,6 +134,7 @@ export default function ProductDetail() {
           </Stack>
         </Stack>
       </SimpleGrid>
+      <ToastContainer />
     </Container>
   );
 }
