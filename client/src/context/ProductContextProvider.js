@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Api from "../utils/Api";
 import { Alert, AlertIcon, Stack, useToast } from "@chakra-ui/react";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
 const URL_PRODUCT_DETAIL = "/:id";
@@ -14,8 +15,10 @@ const INITIAL_STATE = {
   statusCode: true,
 };
 
+const notifySuccess = () => toast.success("Məhsul səbətə əlavə edildi!");
+const notifyError = () => toast.error("Bu məhsul səbəttə mövcuddur!");
+
 const ProductContextProvider = (props) => {
-  const toast = useToast();
   const [state, setState] = useState(INITIAL_STATE);
   return (
     <ProductContext.Provider
@@ -65,23 +68,9 @@ const ProductContextProvider = (props) => {
       (rsp) => {
         console.log("sssss", rsp);
         if (rsp.data.result === false) {
-          toast({
-            title: "Bu məhsul səbəttə mövcuddur!",
-            description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
-            position: "top-right",
-            status: "error",
-            duration: 2000,
-            isClosable: true,
-          });
+          notifyError();
         } else {
-          toast({
-            title: "Məhsul səbətə əlavə edildi!",
-            description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
-            position: "top-right",
-            status: "success",
-            duration: 2000,
-            isClosable: true,
-          });
+          notifySuccess();
         }
       }
     );

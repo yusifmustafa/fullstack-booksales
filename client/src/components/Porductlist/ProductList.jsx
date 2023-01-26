@@ -17,6 +17,7 @@ import { ProductContext } from "../../context/ProductContextProvider";
 import Carousell from "./Carousel";
 import Api from "../../utils/Api";
 import "./ProductList.css";
+import { ToastContainer } from "react-toastify";
 const ProductList = () => {
   const context = useContext(ProductContext);
   const { products } = context;
@@ -55,13 +56,7 @@ const ProductList = () => {
                             alt={item?.name}
                             className="card-img-top"
                           />
-                          <i
-                            onClick={() => {
-                              console.log("click");
-                            }}
-                            className="fa fa-heart"
-                            aria-hidden="true"
-                          ></i>
+
                           <Badge ml="1" colorScheme="green">
                             20% ENDİRİM
                           </Badge>
@@ -73,6 +68,7 @@ const ProductList = () => {
                             color="teal.700"
                             size="md"
                             textTransform="capitalize"
+                            fontFamily="cursive"
                           >
                             {item?.name}
                           </Heading>
@@ -82,7 +78,7 @@ const ProductList = () => {
                             letterSpacing="1.1px"
                             color="teal.600"
                             textTransform="uppercase"
-                            marginTop="0.55rem"
+                            marginTop="1.5rem"
                             className="author-text"
                           >
                             Yazıçı:{item?.author}
@@ -99,14 +95,20 @@ const ProductList = () => {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            marginTop: "10%",
+                            marginTop: "30%",
                           }}
                         >
                           <Button
                             onClick={() => handleAddProductBasket(item.id)}
                             colorScheme="orange"
                           >
-                            SƏBƏTƏ ƏLAVƏ ET
+                            <i class="fas fa-shopping-cart "></i>
+                          </Button>
+                          <Button
+                            onClick={() => handleAddProductBasket(item.id)}
+                            colorScheme="red"
+                          >
+                            <i class="fa-solid fa-heart"></i>{" "}
                           </Button>
                         </Wrap>
                       </div>
@@ -125,6 +127,7 @@ const ProductList = () => {
             </div>
           </Stack>
         </Box>
+        <ToastContainer />
       </div>
       <Footer />
     </>

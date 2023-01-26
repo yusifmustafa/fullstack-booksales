@@ -8,6 +8,7 @@ import BasketProducts from "../Basket Products/BasketProducts";
 import Paypal from "../Paypal Page/Paypal";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
+import WishList from "../Wish List/WishList";
 
 const Routing = () => {
   return (
@@ -22,6 +23,7 @@ const Routing = () => {
           <Route path="/paypalpage" element={<Paypal />} />
           <Route path="/signin" element={<LoginPage />} />
           <Route path="/signup" element={<RegisterPage />} />
+          <Route path="/wishlist" element={<WishList />} />
         </Routes>
       </ProductContextProvider>
     </>

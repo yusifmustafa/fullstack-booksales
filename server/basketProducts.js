@@ -50,21 +50,25 @@ app.post("/:id", (req, res) => {
     });
 });
 
-// app.put("/:id", (req, res) => {
-//   const data = [req.params.count, req.params.id];
-//   database.query(
-//     "UPDATE basketproduct Set count=? WHERE bookId = ?",
-//     data,
-//     (err, result) => {
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         res.send(result);
-//       }
-//     }
-//   );
-//   res.send(data);
-// });
+app.put("/:id", (req, res) => {
+  const data = [req.body.count, req.params.id];
+  console.log("data",data);
+  database.query(
+    "UPDATE basketproduct Set count=? WHERE bookId = ?",
+    data,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+          console.log(result);
+
+
+      }
+    }
+  );
+  res.send(data);
+});
 
 app.delete("/:id", (req, res) => {
   database.query(
