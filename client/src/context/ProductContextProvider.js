@@ -63,7 +63,7 @@ const ProductContextProvider = (props) => {
   function sendToBasketProducts(id) {
     Api.post(`http://127.0.0.1:5000/api/basketproducts/${id}`, id).then(
       (rsp) => {
-        console.log("sssss", rsp.data.result);
+        console.log("sssss", rsp);
         if (rsp.data.result === false) {
           toast({
             title: "Bu məhsul səbəttə mövcuddur!",

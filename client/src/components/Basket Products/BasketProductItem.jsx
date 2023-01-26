@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./BasketProductItem.css";
 import { Button, useToast } from "@chakra-ui/react";
-
+import Api from "../../utils/Api";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {

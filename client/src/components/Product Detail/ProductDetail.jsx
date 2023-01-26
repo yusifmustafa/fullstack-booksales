@@ -13,7 +13,6 @@ import {
   useColorModeValue,
   List,
   ListItem,
-  useToast,
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { MdLocalShipping } from "react-icons/md";
@@ -28,7 +27,6 @@ export default function ProductDetail() {
   useEffect(() => {
     context.getProductById(id);
   }, [id]);
-  const toast = useToast();
 
   return (
     <Container maxW={"7xl"}>
@@ -44,9 +42,9 @@ export default function ProductDetail() {
             src={product?.image}
             fit={"cover"}
             align={"center"}
-            w={"70%"}
-            h={"100%"}
-           />
+            w={"50%"}
+            h={"90%"}
+          />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={"header"}>
@@ -124,14 +122,6 @@ export default function ProductDetail() {
             }}
             onClick={() => {
               context.sendToBasketProducts(product.id);
-              toast({
-                title: "Məhsul səbətə əlavə edildi!",
-                description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
-                position: "top-right",
-                status: "success",
-                duration: 9000,
-                isClosable: true,
-              });
             }}
           >
             Səbətə Əlavə et

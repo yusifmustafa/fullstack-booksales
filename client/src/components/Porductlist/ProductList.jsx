@@ -17,35 +17,13 @@ import { ProductContext } from "../../context/ProductContextProvider";
 import Carousell from "./Carousel";
 import Api from "../../utils/Api";
 import "./ProductList.css";
-import { useState } from "react";
 const ProductList = () => {
   const context = useContext(ProductContext);
   const { products } = context;
   useEffect(() => {
     context.getAllProduct();
   }, []);
-  const toast = useToast();
   const handleAddProductBasket = (id) => {
-    // if (statusCode === false) {
-    //   console.log("salam");
-    //   toast({
-    //     title: "Bu məhsul səbəttə mövcuddur!",
-    //     description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
-    //     position: "top-right",
-    //     status: "error",
-    //     duration: 2000,
-    //     isClosable: true,
-    //   });
-    // } else {
-    //   toast({
-    //     title: "Məhsul səbətə əlavə edildi!",
-    //     description: "Məhsulu görüntüləmək üçün səbətə daxil olun",
-    //     position: "top-right",
-    //     status: "success",
-    //     duration: 2000,
-    //     isClosable: true,
-    //   });
-    // }
     context.sendToBasketProducts(id);
   };
 
@@ -77,7 +55,13 @@ const ProductList = () => {
                             alt={item?.name}
                             className="card-img-top"
                           />
-                          <i className="fa fa-heart" aria-hidden="true"></i>
+                          <i
+                            onClick={() => {
+                              console.log("click");
+                            }}
+                            className="fa fa-heart"
+                            aria-hidden="true"
+                          ></i>
                           <Badge ml="1" colorScheme="green">
                             20% ENDİRİM
                           </Badge>
