@@ -433,7 +433,7 @@ a.remove:hover {
 .containerr {
   width: 334px;
   margin: 0 auto;
-   position: absolute;
+  position: absolute;
   top: 50%;
   left: 0;
   text-align: center;
@@ -722,3 +722,29 @@ a {
   color: #f764ff;
   font-weight: 700;
 }
+.paypal-page {
+  background-color: whitesmoke;
+  width: 100%;
+  padding: 0.75rem;
+ }
+
+.paypal-page .head-text {
+  display: flex;
+  padding: 0.75rem;
+  justify-content: space-around;
+  align-items: center;
+ }
+
+.paypal-page .form input {
+  padding: 0.55rem;
+  width: 300px;
+  border: 1px solid #d0d0d0;
+  background-color: transparent;
+}
+.paypal-page .form input:focus {
+  background-color: none;
+  /* transition: .5s; */
+  outline: 1px #ffc384 auto;
+  
+}
+ 

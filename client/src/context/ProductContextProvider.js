@@ -12,12 +12,14 @@ const INITIAL_STATE = {
   sendToBasketProduct: [],
   user: {},
   wishListProducts: [],
-  statusCode: true,
 };
 
 const notifySuccess = () => toast.success("Məhsul səbətə əlavə edildi!");
 const notifyError = () => toast.error("Bu məhsul səbəttə mövcuddur!");
-
+const notifyAddFavProd = () =>
+  toast.success("Məhsul favoritlər siyahısına əlavə edildi!");
+const notifyAddFavProdErr = () =>
+  toast.error("Bu məhsul favoritlər siyahısında mövcuddur!");
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   return (
@@ -32,6 +34,8 @@ const ProductContextProvider = (props) => {
         handleOnChange: handleOnChange,
         addProductToWishList: addProductToWishList,
         getWishListProducts: getWishListProducts,
+        deleteWishListProduct: deleteWishListProduct,
+        updateProduct: updateProduct,
       }}
     >
       {props.children}
@@ -62,7 +66,6 @@ const ProductContextProvider = (props) => {
     Api.get(URL_BASKET_PRODUCTS).then((rsp) => {
       const data = rsp?.data;
       setState({ ...state, sendToBasketProduct: data });
-      console.log("data:", data);
     });
   }
   function sendToBasketProducts(id) {
@@ -79,21 +82,40 @@ const ProductContextProvider = (props) => {
   }
   function getWishListProducts() {
     Api.get("http://127.0.0.1:5000/api/favproducts").then((rsp) => {
-      console.log(rsp);
       setState({ ...state, wishListProducts: rsp.data });
     });
   }
 
   function addProductToWishList(id) {
     Api.post(`http://127.0.0.1:5000/api/favproducts/${id}`).then((rsp) => {
+      if (rsp.data.result === false) {
+        notifyAddFavProdErr();
+      } else {
+        notifyAddFavProd();
+        console.log("salam");
+      }
       console.log(rsp);
     });
   }
 
   function deleteBasketProduct(id) {
     Api.delete(`http://127.0.0.1:5000/api/basketproducts/${id}`).then(() => {
-      getAllProduct();
+      getBasketProducts();
     });
+  }
+
+  function deleteWishListProduct(id) {
+    Api.delete(`http://127.0.0.1:5000/api/favproducts/${id}`).then(() => {
+      getWishListProducts();
+    });
+  }
+
+  function updateProduct(id, count) {
+    Api.put(`http://127.0.0.1:5000/api/favproducts/${id}`, count).then(
+      (rsp) => {
+        console.log(rsp);
+      }
+    );
   }
 };
 

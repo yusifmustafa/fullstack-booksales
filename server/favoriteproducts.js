@@ -27,8 +27,10 @@ app.post("/:id",(req,res)=>{
                 }
                 else{
                     res.send(result);
-                }
+                 }
             })
+            res.send({result:true});
+
         }
         else{
             res.send({result:false});

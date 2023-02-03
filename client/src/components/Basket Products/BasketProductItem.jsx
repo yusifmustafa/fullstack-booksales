@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./BasketProductItem.css";
 import { Button, useToast } from "@chakra-ui/react";
-import Api from "../../utils/Api";
-import { Link } from "react-router-dom";
-import { ProductContext } from "../../context/ProductContextProvider";
+ import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
-  const [quantity, setQuantity] = useState(1);
+  const [count, setCount] = useState(1);
   const { item } = props;
   const toast = useToast();
 
@@ -13,13 +11,13 @@ const BasketProductItem = (props) => {
 
   const handleIncrement = (id) => {
     if (id === item.id) {
-      setQuantity((item.count += 1));
+      setCount((item.count += 1));
     }
   };
 
   const handleDecrement = (id) => {
     if (id === item.id) {
-      setQuantity((item.count -= 1));
+      setCount((item.count -= 1));
     }
   };
 
@@ -39,6 +37,7 @@ const BasketProductItem = (props) => {
 
   let itemPrice = item.count * item.price;
   props.func(itemPrice);
+  props.func_count(count);
 
   return (
     <>
@@ -83,12 +82,12 @@ const BasketProductItem = (props) => {
                 >
                   +
                 </Button>
-                <span className="incdecvalue">{quantity}</span>
+                <span className="incdecvalue">{count}</span>
                 <Button
                   onClick={() => {
                     handleDecrement(item.id);
                   }}
-                  disabled={quantity === 1}
+                  disabled={count === 1}
                   colorScheme="orange"
                 >
                   -
@@ -101,5 +100,7 @@ const BasketProductItem = (props) => {
     </>
   );
 };
+
+ 
 
 export default BasketProductItem;

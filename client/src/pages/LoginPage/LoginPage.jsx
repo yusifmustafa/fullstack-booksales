@@ -1,8 +1,54 @@
 import React from "react";
 import "./LoginPage.css";
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+} from "@chakra-ui/react";
 
 const LoginPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Flex align="center" width="full" justifyContent="center">
+        <Box pt={10}>
+          <Box textAlign="center">
+            <Heading>Sign In</Heading>
+          </Box>
+          <Box my={5} textAlign="left">
+            <form>
+              <FormControl>
+                <FormLabel>E-mail</FormLabel>
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  size="md"
+                  required
+                />
+              </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Password</FormLabel>
+                <Input
+                  size="md"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+              </FormControl>
+              <Button mt={4} type="submit" width="full" colorScheme="orange">
+                Sign In
+              </Button>
+            </form>
+          </Box>
+        </Box>
+      </Flex>
+    </div>
+  );
 };
 
 export default LoginPage;

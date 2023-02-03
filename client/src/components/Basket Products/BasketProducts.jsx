@@ -6,7 +6,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContextProvider";
 import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
@@ -18,15 +18,20 @@ const BasketProducts = () => {
     context.getBasketProducts();
   }, []);
   const [priceProduct, setPriceProduct] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(0);
 
   let total = 0;
   const pull_data = (data) => {
     total += data;
     setPriceProduct(total);
+    console.log("priceProduct", priceProduct);
   };
-  const navigate = useNavigate();
-  const navigateToPaypalPage = () => {
-    navigate("/paypalpage");
+
+  let count = 0;
+  const pull_data_quantity = (data) => {
+    count += data;
+    setProductQuantity(count);
+    console.log("countt:", productQuantity);
   };
 
   let shipping = parseInt(priceProduct / 8);
@@ -35,85 +40,107 @@ const BasketProducts = () => {
   let subTotal = priceProduct + shipping + tax;
 
   return (
-    <div className="wrap cf">
-      <h1 className="projTitle">Səbətİnİz</h1>
-      <div className="heading cf">
-        <h1>Məhsullar</h1>
-        <Link to="/" className="continue">
-          Əsas səhifə
-        </Link>
-      </div>
-      <div className="cart">
-        <ul className="cartWrap">
-          {sendToBasketProduct.length ? (
-            sendToBasketProduct.map((item) => {
-              return (
-                <div key={item.id}>
-                  <BasketProductItem item={item} func={pull_data} />
-                </div>
-              );
-            })
-          ) : (
-            <Alert
-              status="error"
-              variant="subtle"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="center"
-              textAlign="center"
-              height="150px"
-              borderRadius="20px"
-            >
-              <AlertIcon boxSize="40px" mr={0} />
-              <AlertTitle mt={4} mb={1} fontSize="lg">
-                Səbətiniz Boşdur!
-              </AlertTitle>
-              <AlertDescription maxWidth="sm">
-                Əsas Səhifəyə qayıdaraq alış-veriş etməyə davam edin
-              </AlertDescription>
-            </Alert>
-          )}
-        </ul>
-
-        <div className="promoCode">
-          <label htmlFor="promo">Promo kodunuz var?</label>
-          <input type="text" name="promo" placholder="Enter Code" />
-          <a style={{ height: 42 }} href="#/" className="btn"></a>
+    <>
+      <div className="wrap cf">
+        <h1 className="projTitle">Səbətİnİz</h1>
+        <div className="heading cf">
+          <h1>Məhsullar</h1>
+          <Link to="/" className="continue">
+            Əsas səhifə
+          </Link>
         </div>
-
-        <div className="subtotal cf">
-          <ul>
-            <li className="totalRow">
-              <span className="label">Çatdırılma</span>
-              <span className="value">₼{shipping}</span>
-            </li>
-
-            <li className="totalRow">
-              <span className="label">Vergİ dəyərİ</span>
-              <span className="value">₼{tax}</span>
-            </li>
-
-            <li className="totalRow final">
-              <span className="label">Ümumİ Qİymət</span>
-              <span className="value">₼{subTotal} </span>
-            </li>
-
-            <li className="totalRow">
-              <div>
-                <button
-                  onClick={() => {
-                    navigateToPaypalPage();
-                  }}
-                  className="two"
-                >
-                  Kartla ödəməyə <b>keç</b>
-                </button>
-              </div>
-            </li>
+        <div className="cart">
+          <ul className="cartWrap">
+            {sendToBasketProduct.length ? (
+              sendToBasketProduct.map((item) => {
+                return (
+                  <div key={item.id}>
+                    <BasketProductItem
+                      item={item}
+                      func={pull_data}
+                      func_count={pull_data_quantity}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <Alert
+                status="error"
+                variant="subtle"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                textAlign="center"
+                height="150px"
+                borderRadius="20px"
+              >
+                <AlertIcon boxSize="40px" mr={0} />
+                <AlertTitle mt={4} mb={1} fontSize="lg">
+                  Səbətiniz Boşdur!
+                </AlertTitle>
+                <AlertDescription maxWidth="sm">
+                  Əsas Səhifəyə qayıdaraq alış-veriş etməyə davam edin
+                </AlertDescription>
+              </Alert>
+            )}
           </ul>
+
+          <div className="promoCode">
+            <label htmlFor="promo">Promo kodunuz var?</label>
+            <input type="text" name="promo" placholder="Enter Code" />
+            <a style={{ height: 42 }} href="#/" className="btn"></a>
+          </div>
+
+          <div className="subtotal cf">
+            <ul>
+              <li className="totalRow">
+                <span className="label">Çatdırılma</span>
+                <span className="value">₼{shipping}</span>
+              </li>
+
+              <li className="totalRow">
+                <span className="label">Vergİ dəyərİ</span>
+                <span className="value">₼{tax}</span>
+              </li>
+              <li className="totalRow">
+                <span className="label">Ümumi məhsul sayı</span>
+                <span className="value">{productQuantity}</span>
+              </li>
+
+              <li className="totalRow final">
+                <span className="label">Ümumİ Qİymət</span>
+                <span className="value">₼{subTotal} </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="paypal-page">
+        <div className="head-text">
+          <h1>BILLING ADDRESS</h1>
+          <h2>PAYMENT</h2>
+        </div>
+        <div className="form">
+          <div className="fullname_cards">
+            <label htmlFor="fullname">FullName:</label>
+            <br />
+            <input type="text" name="fullname" placeholder="Əli Cavadlı" />
+            <h5>Accepted Cards:</h5>
+            <br />
+            <img
+              src="https://www.creditcards.com/ext/cdn.prodstatic.com/shared/images/cards/500x315/642bcfd0-c282-11e8-b091-25b8de89c8f3.png"
+              alt="Paypal"
+            />
+            <img
+              src="https://www.mastercard.ca/content/dam/public/mastercardcom/na/ca/en/consumers/icons/mastercard-standard-card-1280x720.png"
+              alt="MasterCard"
+            />
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

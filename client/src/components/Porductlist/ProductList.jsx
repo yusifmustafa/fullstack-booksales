@@ -102,7 +102,7 @@ const ProductList = () => {
                             onClick={() => handleAddProductBasket(item.id)}
                             colorScheme="orange"
                           >
-                            <i class="fas fa-shopping-cart "></i>
+                            <i className="fas fa-shopping-cart "></i>
                           </Button>
                           <Button
                             onClick={() =>
@@ -110,7 +110,7 @@ const ProductList = () => {
                             }
                             colorScheme="red"
                           >
-                            <i class="fa-solid fa-heart"></i>{" "}
+                            <i className="fa-solid fa-heart"></i>{" "}
                           </Button>
                         </Wrap>
                       </div>
@@ -129,8 +129,8 @@ const ProductList = () => {
             </div>
           </Stack>
         </Box>
-        <ToastContainer />
       </div>
+      <ToastContainer />
       <Footer />
     </>
   );

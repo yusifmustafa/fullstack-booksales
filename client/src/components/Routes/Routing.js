@@ -5,8 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import ProductList from "../Porductlist/ProductList";
 import ProductDetail from "../Product Detail/ProductDetail";
 import BasketProducts from "../Basket Products/BasketProducts";
-import Paypal from "../Paypal Page/Paypal";
-import LoginPage from "../../pages/LoginPage/LoginPage";
+ import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import WishList from "../Wish List/WishList";
 
@@ -20,8 +19,7 @@ const Routing = () => {
           <Route path="productdetail/:id" element={<ProductDetail />} />
           <Route path="/basketproducts" element={<BasketProducts />} />
           <Route path="/basketproducts/:id" element={<BasketProducts />} />
-          <Route path="/paypalpage" element={<Paypal />} />
-          <Route path="/signin" element={<LoginPage />} />
+           <Route path="/signin" element={<LoginPage />} />
           <Route path="/signup" element={<RegisterPage />} />
           <Route path="/wishlist" element={<WishList />} />
         </Routes>
