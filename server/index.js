@@ -3,9 +3,12 @@ const cors = require("cors");
 const app = express();
 const http = require("http");
 const books = require("./books");
+const user = require("./user");
+const auth = require("./auth");
+
 const basketProducts = require("./basketProducts");
 const favoriteProducts = require("./favoriteproducts");
- app.use(express.json());
+app.use(express.json());
 
 app.use(
   cors({
@@ -17,6 +20,8 @@ app.use(
 app.use("/", books);
 app.use("/api/basketproducts", basketProducts);
 app.use("/api/favproducts", favoriteProducts);
+app.use("/api/register", user);
+app.use("/api/login", auth);
 
 const port = process.env.PORT || 5000;
 
