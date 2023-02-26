@@ -1,9 +1,12 @@
 import { Button } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import { ProductContext } from "../../context/ProductContextProvider";
 
 const Navbar = () => {
+  const context = useContext(ProductContext);
+  const { isAuth } = context;
   const navigateToHomePage = () => {
     navigate("/");
   };
@@ -20,18 +23,31 @@ const Navbar = () => {
 
       <div className={styles.right}>
         <div className={styles.icon}>
-          <Link to="/wishlist">
+          <Link className="link" to="/wishlist">
             <i className="fa-solid fa-heart"></i>
           </Link>
-          <Link to="/basketproducts">
+          <Link className="link" to="/basketproducts">
             <i className="fas fa-cart-plus"></i>
           </Link>
         </div>
-        <Link to="/signin">
-          <Button colorScheme="orange">Giriş</Button>
+        <Link to="/">
+          <Button disabled={isAuth === true} colorScheme="orange">
+            Giriş
+          </Button>
         </Link>
         <Link to="/signup">
-          <Button colorScheme="orange">Qeydiyyat</Button>
+          <Button disabled={isAuth === true} colorScheme="orange">
+            Qeydiyyat
+          </Button>
+          {isAuth && (
+            <Button
+              onClick={() => {
+                context.logOut();
+              }}
+            >
+              Çıxış
+            </Button>
+          )}
         </Link>
       </div>
     </nav>

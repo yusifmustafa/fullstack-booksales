@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import "./BasketProductItem.css";
-import { Button, useToast } from "@chakra-ui/react";
+ import { Button, useToast } from "@chakra-ui/react";
  import { ProductContext } from "../../context/ProductContextProvider";
 const BasketProductItem = (props) => {
   const [count, setCount] = useState(1);

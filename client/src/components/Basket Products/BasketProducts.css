@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -726,14 +727,15 @@ a {
   background-color: whitesmoke;
   width: 100%;
   padding: 0.75rem;
- }
+  font-family: "Poppins", sans-serif;
+}
 
 .paypal-page .head-text {
   display: flex;
   padding: 0.75rem;
   justify-content: space-around;
   align-items: center;
- }
+}
 
 .paypal-page .form input {
   padding: 0.55rem;
@@ -745,6 +747,24 @@ a {
   background-color: none;
   /* transition: .5s; */
   outline: 1px #ffc384 auto;
-  
+  border-radius: 5px;
 }
+
+.images {
+  display: flex;
+}
+ .form {
+  display: flex;
+  padding: 0.75rem;
+  width: 100%;
+ }
  
+.fullname_cards{
+  display: flex;  
+  justify-content: space-between;
+}
+
+.images img {
+  width: 7%;
+  padding: 0.25rem;
+}

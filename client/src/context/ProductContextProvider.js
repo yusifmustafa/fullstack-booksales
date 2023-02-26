@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Api from "../utils/Api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
 const URL_PRODUCT_DETAIL = "/:id";
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   sendToBasketProduct: [],
   user: {},
   wishListProducts: [],
+  isAuth: false,
 };
 
 const notifySuccess = () => toast.success("Məhsul səbətə əlavə edildi!");
@@ -20,8 +22,29 @@ const notifyAddFavProd = () =>
   toast.success("Məhsul favoritlər siyahısına əlavə edildi!");
 const notifyAddFavProdErr = () =>
   toast.error("Bu məhsul favoritlər siyahısında mövcuddur!");
+const successRegister = () => {
+  toast.success("Qeydiyyat uğurludur");
+};
+const errorRegister = () => {
+  toast.error("Bu adda istifadəçi mövcuddur");
+};
+const errorRegisterEmpty = () => {
+  toast.error("Məlumatlar tam deyil");
+};
+const errorLogin = () => {
+  toast.error("Xəta! bu maildə istifadəçi mövcud deyil");
+};
+const successLogin = () => {
+  toast.success("Giriş uğurludur");
+};
+const errorPaswordLogin = () => {
+  toast.error("Şifrə yanlışdır");
+};
+
 const ProductContextProvider = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
+
+  const navigate = useNavigate();
   return (
     <ProductContext.Provider
       value={{
@@ -35,7 +58,9 @@ const ProductContextProvider = (props) => {
         addProductToWishList: addProductToWishList,
         getWishListProducts: getWishListProducts,
         deleteWishListProduct: deleteWishListProduct,
-        updateProduct: updateProduct,
+        registerSite: registerSite,
+        loginSite: loginSite,
+        logOut: logOut,
       }}
     >
       {props.children}
@@ -110,12 +135,38 @@ const ProductContextProvider = (props) => {
     });
   }
 
-  function updateProduct(id, count) {
-    Api.put(`http://127.0.0.1:5000/api/favproducts/${id}`, count).then(
-      (rsp) => {
-        console.log(rsp);
+  function registerSite(user) {
+    Api.post("http://127.0.0.1:5000/api/register", user).then((rsp) => {
+      if (rsp.data.message === "Melumat elave edildi") {
+        successRegister();
+      } else if (rsp.data.message === "Bu istifadeci movcuddur") {
+        errorRegister();
+      } else if (rsp.data.message === "Melumatlar tam doldurulmayib") {
+        errorRegisterEmpty();
       }
-    );
+    });
+  }
+
+  function loginSite(user) {
+    Api.post("http://127.0.0.1:5000/api/login", user).then((rsp) => {
+      console.log(rsp);
+      if (rsp.data.message === "Bu mailde istifadeci movcud deyil") {
+        errorLogin();
+        setState({ ...state, isAuth: false });
+      } else if (rsp.data.message === "Girish ugurludur") {
+        successLogin();
+        navigate("/mainPage");
+        setState({ ...state, isAuth: true });
+      } else if (rsp.data.message === "Parol yalnishdir") {
+        errorPaswordLogin();
+        setState({ ...state, isAuth: false });
+      }
+    });
+  }
+
+  function logOut() {
+    navigate("/");
+    setState({ ...state, isAuth: false });
   }
 };
 

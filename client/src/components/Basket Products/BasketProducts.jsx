@@ -127,16 +127,24 @@ const BasketProducts = () => {
             <input type="text" name="fullname" placeholder="Əli Cavadlı" />
             <h5>Accepted Cards:</h5>
             <br />
-            <img
-              src="https://www.creditcards.com/ext/cdn.prodstatic.com/shared/images/cards/500x315/642bcfd0-c282-11e8-b091-25b8de89c8f3.png"
-              alt="Paypal"
-            />
-            <img
-              src="https://www.mastercard.ca/content/dam/public/mastercardcom/na/ca/en/consumers/icons/mastercard-standard-card-1280x720.png"
-              alt="MasterCard"
-            />
-            <img src="" alt="" />
-            <img src="" alt="" />
+            <div className="images">
+              <img
+                src="https://www.creditcards.com/ext/cdn.prodstatic.com/shared/images/cards/500x315/642bcfd0-c282-11e8-b091-25b8de89c8f3.png"
+                alt="Paypal"
+              />
+              <img
+                src="https://www.bmo.com/dist/images/personal/ways-to-bank/bmo-debit-mastercard/card-image-en-350x221.png"
+                alt="MasterCard"
+              />
+              <img
+                src="https://www.ocbc.com/iwov-resources/sg/ocbc/personal/img/live/cards/debit-cards/ppc-pwdc.png"
+                alt="debetCard"
+              />
+              <img
+                src="https://www.ocbc.com/iwov-resources/sg/ocbc/personal/img/live/cards/debit-cards/cardface_ocbc-dc.png"
+                alt="debetCard"
+              />
+            </div>
           </div>
         </div>
       </div>

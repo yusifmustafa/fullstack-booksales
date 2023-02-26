@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./LoginPage.css";
 import {
   Box,
@@ -9,8 +9,19 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { ProductContext } from "../../context/ProductContextProvider";
+import { ToastContainer } from "react-toastify";
 
 const LoginPage = () => {
+  const context = useContext(ProductContext);
+  const { user, handleOnChange, loginSite, isAuth } = context;
+  console.log("isAuth:", isAuth);
+  const handleLoginSite = (e) => {
+    e.preventDefault();
+    console.log("user:", user);
+    loginSite(user);
+  };
   return (
     <div>
       <Flex align="center" width="full" justifyContent="center">
@@ -19,7 +30,7 @@ const LoginPage = () => {
             <Heading>Sign In</Heading>
           </Box>
           <Box my={5} textAlign="left">
-            <form>
+            <form onSubmit={handleLoginSite}>
               <FormControl>
                 <FormLabel>E-mail</FormLabel>
                 <Input
@@ -28,6 +39,13 @@ const LoginPage = () => {
                   type="email"
                   size="md"
                   required
+                  onChange={(event) => {
+                    handleOnChange({
+                      name: event.target.name,
+                      value: event.target.value,
+                    });
+                  }}
+                  value={user.email ? user.email : ""}
                 />
               </FormControl>
               <FormControl mt={4}>
@@ -36,17 +54,32 @@ const LoginPage = () => {
                   size="md"
                   name="password"
                   type="password"
-                  placeholder="Password"
+                  placeholder="Şifrə"
                   required
+                  onChange={(event) => {
+                    handleOnChange({
+                      name: event.target.name,
+                      value: event.target.value,
+                    });
+                  }}
+                  value={user.password ? user.password : ""}
                 />
               </FormControl>
               <Button mt={4} type="submit" width="full" colorScheme="orange">
                 Sign In
               </Button>
             </form>
+            <Box>
+              Hesabınız yoxdursa{" "}
+              <Link style={{ color: "blue" }} to="/signup">
+                Qeydiyyatdan
+              </Link>{" "}
+              keçin
+            </Box>
           </Box>
         </Box>
       </Flex>
+      <ToastContainer />
     </div>
   );
 };
