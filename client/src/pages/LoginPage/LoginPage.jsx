@@ -19,7 +19,6 @@ const LoginPage = () => {
   console.log("isAuth:", isAuth);
   const handleLoginSite = (e) => {
     e.preventDefault();
-    console.log("user:", user);
     loginSite(user);
   };
   return (
@@ -68,7 +67,7 @@ const LoginPage = () => {
               <Button mt={4} type="submit" width="full" colorScheme="orange">
                 Sign In
               </Button>
-            </form>
+            </form>       
             <Box>
               Hesabınız yoxdursa{" "}
               <Link style={{ color: "blue" }} to="/signup">
