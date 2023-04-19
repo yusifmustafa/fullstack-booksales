@@ -14,11 +14,11 @@ import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
 const RegisterPage = () => {
   const context = useContext(ProductContext);
-  const { user, handleOnChange, registerSite } = context;
+  const { user, handleOnChange, registerInSite } = context;
 
   const handleOnSubmitRegistered = (e) => {
     e.preventDefault();
-    registerSite(user);
+    registerInSite(user);
   };
 
   return (
@@ -88,7 +88,7 @@ const RegisterPage = () => {
             </form>
             <Box textAlign="center">
               Hesabınız varsa{" "}
-              <Link style={{ color: "blue" }} to="/">
+              <Link style={{ color: "blue" }} to="/login">
                 Giriş
               </Link>{" "}
               edin

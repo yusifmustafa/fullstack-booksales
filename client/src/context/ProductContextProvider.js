@@ -3,6 +3,8 @@ import Api from "../utils/Api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+
 export const ProductContext = React.createContext({});
 const URL_ALL_PRODUCT = "/";
 const URL_PRODUCT_DETAIL = "/:id";
@@ -13,7 +15,7 @@ const INITIAL_STATE = {
   sendToBasketProduct: [],
   user: {},
   wishListProducts: [],
-  isAuth: false,
+  loading: false,
 };
 
 const notifySuccess = () => toast.success("Məhsul səbətə əlavə edildi!");
@@ -34,9 +36,7 @@ const errorRegisterEmpty = () => {
 const errorLogin = () => {
   toast.error("Xəta! bu maildə istifadəçi mövcud deyil");
 };
-const successLogin = () => {
-  toast.success("Giriş uğurludur");
-};
+
 const errorPaswordLogin = () => {
   toast.error("Şifrə yanlışdır");
 };
@@ -58,9 +58,10 @@ const ProductContextProvider = (props) => {
         addProductToWishList: addProductToWishList,
         getWishListProducts: getWishListProducts,
         deleteWishListProduct: deleteWishListProduct,
-        registerSite: registerSite,
-        loginSite: loginSite,
+        registerInSite: registerInSite,
+        loginAuth: loginAuth,
         logOut: logOut,
+        checkTokenExpiration: checkTokenExpiration,
       }}
     >
       {props.children}
@@ -73,12 +74,14 @@ const ProductContextProvider = (props) => {
       setState({ ...state, products: data });
     });
   }
+
   function getProductById(id) {
     Api.get(URL_PRODUCT_DETAIL.replace("/:id", id)).then((rsp) => {
       const data = rsp?.data;
       data.map((product) => setState({ ...state, product: product }));
     });
   }
+
   function handleOnChange(event) {
     const { name, value } = event;
     setState(
@@ -87,12 +90,14 @@ const ProductContextProvider = (props) => {
       })
     );
   }
+
   function getBasketProducts() {
     Api.get(URL_BASKET_PRODUCTS).then((rsp) => {
       const data = rsp?.data;
       setState({ ...state, sendToBasketProduct: data });
     });
   }
+
   function sendToBasketProducts(id) {
     Api.post(`http://127.0.0.1:5000/api/basketproducts/${id}`, id).then(
       (rsp) => {
@@ -105,6 +110,7 @@ const ProductContextProvider = (props) => {
       }
     );
   }
+
   function getWishListProducts() {
     Api.get("http://127.0.0.1:5000/api/favproducts").then((rsp) => {
       setState({ ...state, wishListProducts: rsp.data });
@@ -135,38 +141,62 @@ const ProductContextProvider = (props) => {
     });
   }
 
-  function registerSite(user) {
+  function registerInSite(user) {
     Api.post("http://127.0.0.1:5000/api/register", user).then((rsp) => {
-      if (rsp.data.message === "Melumat elave edildi") {
-        successRegister();
-      } else if (rsp.data.message === "Bu istifadeci movcuddur") {
+      if (rsp.data.message === "Bu istifadeci movcuddur") {
         errorRegister();
-      } else if (rsp.data.message === "Melumatlar tam doldurulmayib") {
+      }
+      if (rsp.data.message === "Melumatlar tam doldurulmayib") {
         errorRegisterEmpty();
       }
+      if (rsp.data.message === "Melumat elave edildi") {
+        successRegister();
+        setState({ ...state, user: {} });
+      }
+      console.log("rspRegister:", rsp.data);
     });
   }
 
-  function loginSite(user) {
+  function loginAuth(user) {
     Api.post("http://127.0.0.1:5000/api/login", user).then((rsp) => {
-      console.log(rsp);
+      console.log("date", Date.now() / 1000);
+      if (rsp.data.token) {
+        sessionStorage.setItem("token", JSON.stringify(rsp.data.token));
+        setState({ ...state, loading: true });
+        setTimeout(() => {
+          navigate("/");
+          setState({ ...state, loading: false, user: {} });
+        }, [2000]);
+      }
+      if (rsp.data.message === "Parol yalnishdir") {
+        errorPaswordLogin();
+      }
       if (rsp.data.message === "Bu mailde istifadeci movcud deyil") {
         errorLogin();
-        setState({ ...state, isAuth: false });
-      } else if (rsp.data.message === "Girish ugurludur") {
-        successLogin();
-        navigate("/mainPage");
-        setState({ ...state, isAuth: true });
-      } else if (rsp.data.message === "Parol yalnishdir") {
-        errorPaswordLogin();
-        setState({ ...state, isAuth: false });
       }
+      console.log("rspLogin:", rsp.data);
     });
   }
 
   function logOut() {
-    navigate("/");
-    setState({ ...state, isAuth: false });
+    sessionStorage.removeItem("token");
+    setState({ ...state, loading: true });
+    setTimeout(() => {
+      navigate("/login");
+      setState({ ...state, loading: false });
+    }, [2000]);
+  }
+
+  function checkTokenExpiration() {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      const decodedtoken = jwtDecode(token);
+      console.log(decodedtoken);
+      if (decodedtoken.exp < Date.now() / 1000) {
+        sessionStorage.removeItem("token");
+        navigate("/login");
+      }
+    }
   }
 };
 

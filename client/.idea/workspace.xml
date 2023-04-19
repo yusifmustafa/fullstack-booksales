@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="362a25e6-dc50-4601-aa57-f104af9c698d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Basket Products/BasketProductItem.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Basket Products/BasketProductItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Basket Products/BasketProductItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Basket Products/BasketProducts.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Basket Products/BasketProducts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Basket Products/BasketProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Basket Products/BasketProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/ProductContextProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/ProductContextProvider.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -19,6 +30,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2M9DOaZWNjdxyEAhxTtngGoBDPv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,14 +42,30 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Yusif/Desktop/All Projects/fullstack-booksales/server",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/yslex/Desktop/All Projects/fullstack-booksales",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\yslex\\Desktop\\All Projects\\fullstack-booksales\\client\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="362a25e6-dc50-4601-aa57-f104af9c698d" name="Changes" comment="" />
@@ -44,10 +74,39 @@
       <option name="presentableId" value="Default" />
       <updated>1677170872100</updated>
       <workItem from="1677170873341" duration="32000" />
+      <workItem from="1680864450395" duration="4012000" />
+      <workItem from="1680959611921" duration="105000" />
+      <workItem from="1680963570148" duration="780000" />
+      <workItem from="1680966665580" duration="1600000" />
+      <workItem from="1680976974007" duration="4234000" />
+      <workItem from="1680983261942" duration="209000" />
+      <workItem from="1680983482556" duration="1099000" />
+      <workItem from="1681041808409" duration="1883000" />
+      <workItem from="1681043745629" duration="146000" />
+      <workItem from="1681043914449" duration="59000" />
+      <workItem from="1681044003178" duration="1326000" />
+      <workItem from="1681205559479" duration="218000" />
+      <workItem from="1681205792315" duration="46000" />
+      <workItem from="1681205845669" duration="262000" />
+      <workItem from="1681206226782" duration="752000" />
+      <workItem from="1681206994578" duration="21000" />
+      <workItem from="1681207028984" duration="142000" />
+      <workItem from="1681889168234" duration="2604000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Navbar/Navbar.js</url>
+          <line>39</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

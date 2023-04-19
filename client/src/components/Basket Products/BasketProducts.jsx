@@ -11,6 +11,7 @@ import { ProductContext } from "../../context/ProductContextProvider";
 import BasketProductItem from "./BasketProductItem";
 import "./BasketProducts.css";
 import { useState } from "react";
+
 const BasketProducts = () => {
   const context = useContext(ProductContext);
   let { sendToBasketProduct } = context;
@@ -112,39 +113,6 @@ const BasketProducts = () => {
                 <span className="value">₼{subTotal} </span>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-      <div className="paypal-page">
-        <div className="head-text">
-          <h1>BILLING ADDRESS</h1>
-          <h2>PAYMENT</h2>
-        </div>
-        <div className="form">
-          <div className="fullname_cards">
-            <label htmlFor="fullname">FullName:</label>
-            <br />
-            <input type="text" name="fullname" placeholder="Əli Cavadlı" />
-            <h5>Accepted Cards:</h5>
-            <br />
-            <div className="images">
-              <img
-                src="https://www.creditcards.com/ext/cdn.prodstatic.com/shared/images/cards/500x315/642bcfd0-c282-11e8-b091-25b8de89c8f3.png"
-                alt="Paypal"
-              />
-              <img
-                src="https://www.bmo.com/dist/images/personal/ways-to-bank/bmo-debit-mastercard/card-image-en-350x221.png"
-                alt="MasterCard"
-              />
-              <img
-                src="https://www.ocbc.com/iwov-resources/sg/ocbc/personal/img/live/cards/debit-cards/ppc-pwdc.png"
-                alt="debetCard"
-              />
-              <img
-                src="https://www.ocbc.com/iwov-resources/sg/ocbc/personal/img/live/cards/debit-cards/cardface_ocbc-dc.png"
-                alt="debetCard"
-              />
-            </div>
           </div>
         </div>
       </div>
